@@ -28,6 +28,11 @@
 
     <!-- Custom Theme Style -->
     <link href="<?=base_url()?>assets_admin/build/css/custom.min.css" rel="stylesheet">
+
+    <!-- data tables -->
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets_admin/Datatables/DataTables-1.10.18/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets_admin/Datatables/Buttons-1.5.6/css/buttons.dataTables.min.css">
+
   </head>
 
   <body class="nav-md">
@@ -77,54 +82,12 @@
                       <li><a href="#">Import Data Stok</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-money"></i> Diskon</a></li>
-                  <li><a><i class="fa fa-share"></i> Cabang</a></li>
+                  <li><a href="<?=base_url('index.php/c_admin/discount')?>"><i class="fa fa-money"></i> Diskon</a></li>
+                  <li><a href="<?=base_url('index.php/c_admin/region')?>"><i class="fa fa-share"></i> Cabang</a></li>
                   <li><a href="<?=base_url('index.php/c_admin/karyawan')?>"><i class="fa fa-user"></i>Karyawan</a></li>
-                  <li><a><i class="fa fa-bar-chart-o"></i>Laporan</a></li>
+                  <li><a><i class="fa fa-bar-chart-o"></i>Laporan (coming soon)</a></li>
                 </ul>
-              </div><!-- 
-              <div class="menu_section">
-                <h3>Live On</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">E-commerce</a></li>
-                      <li><a href="projects.html">Projects</a></li>
-                      <li><a href="project_detail.html">Project Detail</a></li>
-                      <li><a href="contacts.html">Contacts</a></li>
-                      <li><a href="profile.html">Profile</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
-                      <li><a href="page_404.html">404 Error</a></li>
-                      <li><a href="page_500.html">500 Error</a></li>
-                      <li><a href="plain_page.html">Plain Page</a></li>
-                      <li><a href="login.html">Login Page</a></li>
-                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a>
-                        <li><a>Level One<span class="fa fa-chevron-down"></span></a>
-                          <ul class="nav child_menu">
-                            <li class="sub_menu"><a href="level2.html">Level Two</a>
-                            </li>
-                            <li><a href="#level2_1">Level Two</a>
-                            </li>
-                            <li><a href="#level2_2">Level Two</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a>
-                        </li>
-                    </ul>
-                  </li>                  
-                  <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
-                </ul>
-              </div> -->
+              </div>
 
             </div>
             <!-- /sidebar menu -->
@@ -246,7 +209,7 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="right_col" role="main"> 
           <!-- top tiles -->
           <?=$contents?>
         </div>
@@ -265,6 +228,39 @@
 
     <!-- jQuery -->
     <script src="<?=base_url()?>assets_admin/vendors/jquery/dist/jquery.min.js"></script>
+
+    <!-- datatables -->
+    <!-- <script src="<?=base_url()?>assets_admin/Datatables/jQuery-3.3.1/jquery-3.3.1.js"></script> -->
+    <script src="<?=base_url()?>assets_admin/Datatables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>assets_admin/Datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="<?=base_url()?>assets_admin/Datatables/Buttons-1.5.6/js/buttons.flash.min.js"></script>
+    <script src="<?=base_url()?>assets_admin/Datatables/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="<?=base_url()?>assets_admin/Datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
+    <script src="<?=base_url()?>assets_admin/Datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+    <script src="<?=base_url()?>assets_admin/Datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+    <script src="<?=base_url()?>assets_admin/Datatables/Buttons-1.5.6/js/buttons.print.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#myTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+              {
+                extend: 'pdf'
+              },
+              {
+                extend: 'print',
+              },
+              {
+                extend: 'excel'
+              }
+            ]
+          });
+
+          $('#myTable2').DataTable();
+      } );
+    </script>
+
     <!-- Bootstrap -->
     <script src="<?=base_url()?>assets_admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
