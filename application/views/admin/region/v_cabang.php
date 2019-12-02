@@ -1,6 +1,6 @@
 	<div class="page-title">
 	  <div class="title_left">
-	    <h3>Tables <small>Data Diskon</small></h3>
+	    <h3>Tables <small>Data Cabang</small></h3>
 	  </div>
 
 	  <div class="title_right">
@@ -21,7 +21,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Data <small>Diskon</small></h2>
+          <h2>Data <small>Cabang</small></h2>
           <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link" title="Hide"><i class="fa fa-chevron-up"></i></a>
             </li>
@@ -32,30 +32,30 @@
         </div>
 
         <div class="x_content">
-          <a href="" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Add</a>
+          <a href="<?=base_url('index.php/c_admin/add_region')?>" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Add</a>
 
           <div class="table-responsive">
             <table class="table table-striped jambo_table bulk_action" id="myTable">
               <thead>
                 <tr class="headings">
-                  <th class="column-title">Id Diskon </th>
-                  <th class="column-title">Besar Diskon </th>
-                  <th class="column-title">Syarat MIn Belanja </th>
+                  <th class="column-title">Id Regioon </th>
+                  <th class="column-title">Nama Cabang </th>
+                  <th class="column-title">Alamat </th>
                   <th class="column-title">Actions</th>
                 </tr>
               </thead>
 
               <tbody>
               	<?php 
-              		foreach ($data_diskon as $key => $value) {
+              		foreach ($data_region as $key => $value) {
               			?>
               				<tr>
-              					<td><?=$value->id_diskon?></td>
-              					<td><?=$value->total_diskon?></td>
-              					<td><?=$value->min_pembelian?></td>
+              					<td><?=$value->id_region?></td>
+              					<td><?=$value->nama_region?></td>
+              					<td><?=$value->alamat?></td>
               					<td align="center">
-              						<a href="<?=base_url('index.php/c_admin/update_data_karyawan/'.$value->id_diskon)?>" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
-              						<a href="<?=base_url('index.php/c_admin/del_data_karyawan/'.$value->id_diskon)?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+              						<a href="<?=base_url('index.php/c_admin/update_data_karyawan/'.$value->id_region)?>" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
+              						<a href="<?=base_url('index.php/c_admin/del_data_karyawan/'.$value->id_region)?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
               					</td>
               				</tr>
               			<?php

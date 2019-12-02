@@ -28,6 +28,16 @@
     		return $query->result();
     	}
 
+    	public function new_id_karyawan(){
+    		// $sql = $this->db->query("select max('id_staff') as maxID from staff");
+
+    		// $this->db->select_max('id_staff');
+
+    		// $query = $this->db->get('staff');
+
+    		// return $query->row();
+    	}
+
     }
 
 ?>
