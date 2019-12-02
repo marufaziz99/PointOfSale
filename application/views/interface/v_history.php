@@ -12,6 +12,14 @@
 							<span>Rp. <?=$total?></span>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-lg-4 col-md-4">
+							<h5>Tanggal</h5>
+						</div>
+						<div class="col-lg-8 col-md-8">
+							<span><?=date("D - M - Y")?></span>
+						</div>
+					</div>
 				</div>
 				<div class="table-responsive" style="margin-top: 20px;">
 					<table class="table table-striped" id="myTable">
