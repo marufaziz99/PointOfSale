@@ -4,6 +4,14 @@
 
     class M_admin extends CI_Model{
 
+        public function get_transaksi_shift1(){
+            $currentDate = date('Y/m/d');
+
+            $sql = $this->db->query("SELECT COUNT(no_nota) FROM jual WHERE tanggal = $currentDate AND waktu BETWEEN '08:00:00' AND '16:00:00'");
+
+            return $sql;
+        }
+
     	public function get_diskon(){
     		$this->db->select('*');
     		$this->db->from('diskon');

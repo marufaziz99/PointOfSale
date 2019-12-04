@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+	<link rel="icon" href="<?=base_url()?>assets_admin/production/images/favicon.png" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    <title>Fla - FLa Milkshake</title>
 
     <!-- Bootstrap -->
     <link href="<?=base_url()?>assets_admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -71,7 +71,7 @@
                   <li><a><i class="fa fa-home"></i> Home</a></li>
                   <li><a><i class="fa fa-edit"></i> Transaksi <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Shift 1</a></li>
+                      <li><a href="<?=base_url('index.php/c_admin/shift1')?>">Shift 1</a></li>
                       <li><a href="#">Shift 2</a></li>
                       <li><a href="#">Total Transaksi</a></li>
                     </ul>

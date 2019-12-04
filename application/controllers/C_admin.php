@@ -14,6 +14,13 @@ class C_admin extends CI_Controller {
         $this->template_admin->load('template_admin','admin/dashboard/v_dashboard');
 	}
 
+	public function shift1(){
+		$data = array(
+			'jumlah' => $this->model->get_transaksi_shift1()
+		);
+		$this->template_admin->load('template_admin','admin/transaksi/v_shift1', $data);
+	}
+
 	public function discount(){
 		$data = array(
 			'data_diskon' => $this->model->get_diskon()
