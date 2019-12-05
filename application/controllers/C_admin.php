@@ -15,8 +15,25 @@ class C_admin extends CI_Controller {
 	}
 
 	public function shift1(){
+		$jumlah = 0;
+		$omset = 0;
+		$status_proses = 0;	
+		$status_succcess = 0;
+		foreach ($this->model->get_transaksi_shift1() as $key => $value) {
+			$jumlah++;
+			$omset = $omset + $value->total;
+			if($value->status != 'Success'){
+				$status_proses++;
+			}
+			else{
+				$status_succcess++;
+			}
+		}
 		$data = array(
-			'jumlah' => $this->model->get_transaksi_shift1()
+			'jumlah' => $jumlah,
+			'omset' => $omset,
+			'proses' => $status_proses,
+			'success' => $status_succcess
 		);
 		$this->template_admin->load('template_admin','admin/transaksi/v_shift1', $data);
 	}

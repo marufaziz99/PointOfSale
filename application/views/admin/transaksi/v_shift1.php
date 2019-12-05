@@ -10,7 +10,7 @@
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-money"></i></div>
-                  <div class="count">179</div>
+                  <div class="count">Rp. <small><?=$omset?></small></div>
                   <br>
                   <h3>Omset Shift 1</h3>
                 </div>
@@ -18,7 +18,7 @@
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-circle-o-notch"></i></div>
-                  <div class="count">179</div>
+                  <div class="count"><?=$proses?></div>
                   <br>
                   <h3>Dalam Proses</h3>
                 </div>
@@ -26,7 +26,7 @@
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                  <div class="count">179</div>
+                  <div class="count"><?=$success?></div>
                   <br>
                   <h3>Pesanan Selesai</h3>
                 </div>
