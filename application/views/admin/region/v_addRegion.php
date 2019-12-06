@@ -33,20 +33,20 @@
 	            <a href="<?=base_url('index.php/c_admin/region')?>" class="btn btn-warning btn-xs"><i class="fa fa-mail-reply"></i> Back</a>
           	</div>         	
             <br />
-            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" action="<?=base_url('index.php/c_admin/insert_region')?>">
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama Region <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" placeholder="ex : seturan">
+                  <input type="text" id="last-name" name="nama" required="required" class="form-control col-md-7 col-xs-12" placeholder="ex : seturan">
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Alamat <span class="required">*</span></label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" required="required" placeholder="ex : jl. seturan raya no : 191">
+                  <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="alamat" required="required" placeholder="ex : jl. seturan raya no : 191">
                 </div>
               </div>
 
@@ -55,7 +55,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                   <button class="btn btn-primary" type="button">Cancel</button>
 		  						<button class="btn btn-primary" type="reset">Reset</button>
-                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="submit" name="submit" class="btn btn-success">Submit</button>
                 </div>
               </div>
 

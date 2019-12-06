@@ -38,6 +38,7 @@
             <table class="table table-striped jambo_table bulk_action" id="myTable">
               <thead>
                 <tr class="headings">
+                  <th class="column-title">No</th>
                   <th class="column-title">Id Staff </th>
                   <th class="column-title">Nama Karyawan </th>
                   <th class="column-title">Username </th>
@@ -45,24 +46,26 @@
                   <th class="column-title">Kontak </th>
                   <th class="column-title">Alamat </th>
                   <th class="column-title">Email </th>
-                  <th class="column-title">Images</th>
+                  <!-- <th class="column-title">Images</th> -->
                   <th class="column-title">Actions</th>
                 </tr>
               </thead>
 
               <tbody>
               	<?php 
+                  $no = 1;
               		foreach ($data_karyawan as $key => $value) {
               			?>
               				<tr class="even pointer">
+                        <td><?=$no++?></td>
               					<td><?=$value->id_staff?></td>
               					<td><?=$value->Nama?></td>
               					<td><?=$value->username?></td>
-              					<td><?=$value->password?></td>
+              					<td><?=base64_encode($value->password)?></td>
               					<td><?=$value->contact?></td>
               					<td><?=$value->alamat?></td>
               					<td><?=$value->email?></td>
-              					<td><?=$value->image?></td>
+              					<!-- <td><?=$value->image?></td> -->
               					<td>
               						<a href="<?=base_url('index.php/c_admin/update_data_karyawan/'.$value->id_staff)?>" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
               						<a href="<?=base_url('index.php/c_admin/del_data_karyawan/'.$value->id_staff)?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>

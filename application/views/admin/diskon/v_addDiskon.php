@@ -33,11 +33,11 @@
 	            <a href="<?=base_url('index.php/c_admin/discount')?>" class="btn btn-warning btn-xs"><i class="fa fa-mail-reply"></i> Back</a>
           	</div>         	
             <br />
-            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left input-mask">
+            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left input-mask" method="post" action="<?=base_url('index.php/c_admin/insert_diskon')?>">
             	<div class="row">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Besar Diskon <span class="required">*</span></label>
             		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-	                <input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name">
+	                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : 10" name="nominal">
 	                <span class="form-control-feedback right" aria-hidden="true">%</span>
 	              </div>
             	</div>
@@ -45,7 +45,7 @@
             	<div class="row">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Minimal Pembelian <span class="required">*</span></label>
             		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-	                <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">
+	                <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ex: 50000" name="min_pembelian">
 	                <span class="form-control-feedback left" aria-hidden="true">Rp.</span>
 	              </div>
             	</div>             
@@ -55,7 +55,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                   <button class="btn btn-primary" type="button">Cancel</button>
 		  						<button class="btn btn-primary" type="reset">Reset</button>
-                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="submit" name="submit" class="btn btn-success">Submit</button>
                 </div>
               </div>
 

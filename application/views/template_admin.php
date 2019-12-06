@@ -33,6 +33,8 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets_admin/Datatables/DataTables-1.10.18/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets_admin/Datatables/Buttons-1.5.6/css/buttons.dataTables.min.css">
 
+
+
   </head>
 
   <body class="nav-md">
@@ -72,8 +74,8 @@
                   <li><a><i class="fa fa-edit"></i> Transaksi <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?=base_url('index.php/c_admin/shift1')?>">Shift 1</a></li>
-                      <li><a href="#">Shift 2</a></li>
-                      <li><a href="#">Total Transaksi</a></li>
+                      <li><a href="<?=base_url('index.php/c_admin/shift2')?>">Shift 2</a></li>
+                      <li><a href="<?=base_url('index.php/c_admin/total_transaksi')?>">Total Transaksi</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-list"></i> Inventaris <span class="fa fa-chevron-down"></span></a>
@@ -122,7 +124,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<?=base_url()?>assets_admin/images/img.jpg" alt="">John Doe
+                    <img src="<?=base_url()?>assets_admin/production/images/img.jpg" alt="">John Doe
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -146,7 +148,7 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="<?=base_url()?>assets_admin/images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?=base_url()?>assets_admin/production/images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -158,7 +160,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="<?=base_url()?>assets_admin/images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?=base_url()?>assets_admin/production/images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -170,7 +172,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="<?=base_url()?>assets_admin/images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?=base_url()?>assets_admin/production/images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -182,7 +184,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="<?=base_url()?>assets_admin/images/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="<?=base_url()?>assets_admin/production/images/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -211,6 +213,7 @@
         <!-- page content -->
         <div class="right_col" role="main"> 
           <!-- top tiles -->
+          <div class="flash-data" data-flashdata="<?=$this->session->flashdata('flash')?>"></div>
           <?=$contents?>
         </div>
         <!-- /page content -->
@@ -299,6 +302,9 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?=base_url()?>assets_admin/build/js/custom.min.js"></script>
+
+    <script src="<?=base_url()?>assets/alert/sweetalert2.all.min.js"></script>
+    <script src="<?=base_url()?>assets/alert/myscript.js"></script>
 	
   </body>
 </html>
