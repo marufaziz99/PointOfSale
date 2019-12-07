@@ -4,8 +4,19 @@
 
     class M_admin extends CI_Model{
 
-        public function set_count_powder(){
-            #code...
+        public function get_count_powder(){
+
+            $sql = $this->db->count_all_results('powder');
+
+            return $sql;
+        }
+
+        public function get_count_topping(){
+        	return $this->db->count_all_results('topping');
+        }
+
+        public function get_count_karyawan(){
+        	return $this->db->count_all_results('staff');
         }
 
         public function get_transaksi_shift1(){

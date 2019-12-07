@@ -212,6 +212,7 @@
 
         <!-- page content -->
         <div class="right_col" role="main"> 
+          
           <!-- top tiles -->
           <div class="flash-data" data-flashdata="<?=$this->session->flashdata('flash')?>"></div>
           <?=$contents?>

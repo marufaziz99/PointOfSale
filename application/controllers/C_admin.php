@@ -11,7 +11,21 @@ class C_admin extends CI_Controller {
     }
 
 	public function index(){
-        $this->template_admin->load('template_admin','admin/dashboard/v_dashboard');
+		$jumlah = 0;
+		$omset = 0;
+		foreach ($this->model->get_transaksi() as $key => $value) {
+			$jumlah++;
+			$omset = $omset + $value->total;
+		}
+		$data = array(
+			'region' => $this->model->get_region(),
+			'powder' => $this->model->get_count_powder(),
+			'topping' => $this->model->get_count_topping(),
+			'karyawan' => $this->model->get_count_karyawan(),
+			'profit' => $omset,
+			'order' => $jumlah
+		);
+        $this->template_admin->load('template_admin','admin/dashboard/v_dashboard', $data);
 	}
 
 	public function shift1(){
