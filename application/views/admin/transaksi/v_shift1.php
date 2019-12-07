@@ -83,7 +83,7 @@
                     			?>
 
                     				<div role="tabpanel" <?php if ($key == 0) { ?> class="tab-pane fade active in" <?php } else { ?> class="tab-pane fade" <?php } ?> id="tab_content<?=$value->id_region?>" aria-labelledby="<?=$value->nama_region?>-tab">
-			                        <table class="table table-striped jambo_table bulk_action" id="myTable">
+			                        <table  class="table table-striped jambo_table bulk_action display" >
 									              <thead>
 									                <tr class="headings">
 									                  <th class="column-title">No </th>
@@ -177,3 +177,9 @@
                 </div>
               </div>
             </div>
+
+            <script>
+              $(document).ready(function() {
+                $('table.display').DataTable();
+              });
+            </script>

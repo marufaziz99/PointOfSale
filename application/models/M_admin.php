@@ -4,6 +4,10 @@
 
     class M_admin extends CI_Model{
 
+        public function set_count_powder(){
+            #code...
+        }
+
         public function get_transaksi_shift1(){
             $currentDate = date('Y-m-d');
 
