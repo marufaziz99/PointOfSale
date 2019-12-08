@@ -1,6 +1,6 @@
           <?php
 
-          	$query = new mysqli('localhost', 'root','', 'kasir');
+          	$query = new mysqli('localhost', 'root','', 'db_pos');
 
           ?>
 

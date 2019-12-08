@@ -103,6 +103,19 @@ class C_admin extends CI_Controller {
 		$this->template_admin->load('template_admin','admin/transaksi/v_totalTransaksi', $data);
 	}
 
+	public function inventory(){
+		$data = array(
+			'region' => $this->model->get_region(),
+			'basic' => $this->model->get_menu_basic(),
+			'pm' => $this->model->get_menu_pm(),
+			'soklat' => $this->model->get_menu_soklat(),
+			'coklat_pm' => $this->model->get_menu_coklat_pm(),
+			'yakult' => $this->model->get_menu_yakult(),
+			'juice' => $this->model->get_menu_juice()
+		);
+		$this->template_admin->load('template_admin','admin/inventory/v_listInventory', $data);
+	}
+
 	public function discount(){
 		$data = array(
 			'data_diskon' => $this->model->get_diskon()

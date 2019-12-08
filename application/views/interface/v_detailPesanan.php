@@ -113,7 +113,7 @@
 						<tbody id="show_data">
 
 							<?php
-								$connect = mysqli_connect('localhost','root','','kasir');
+								$connect = mysqli_connect('localhost','root','','db_pos');
 								$no = 1;
 								foreach ($result as $key => $value) {
 									?>

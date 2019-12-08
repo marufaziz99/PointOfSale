@@ -71,7 +71,7 @@
                     </ul>
                     <div id="myTabContent" class="tab-content">
                     	<?php
-                    		$query = new mysqli('localhost', 'root','', 'kasir');
+                    		$query = new mysqli('localhost', 'root','', 'db_pos');
                     		foreach ($region as $key => $value) {
                     			# code...
                     			?>

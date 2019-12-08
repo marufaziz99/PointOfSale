@@ -40,7 +40,7 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
+        <div class="col-md-3 left_col" style="position: fixed;">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
               <a href="index.html" class="site_title">
@@ -80,7 +80,7 @@
                   </li>
                   <li><a><i class="fa fa-list"></i> Inventaris <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Daftar Stok</a></li>
+                      <li><a href="<?=base_url('index.php/c_admin/inventory')?>">Daftar Stok</a></li>
                       <li><a href="#">Import Data Stok</a></li>
                     </ul>
                   </li>
@@ -99,7 +99,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen" onclick="toggleFullScreen ();">
                 <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
               </a>
               <a data-toggle="tooltip" data-placement="top" title="Lock">
@@ -114,7 +114,7 @@
         </div>
 
         <!-- top navigation -->
-        <div class="top_nav">
+        <div class="top_nav" style="position: relative;">
           <div class="nav_menu">
             <nav>
               <div class="nav toggle">
@@ -261,7 +261,12 @@
             ]
           });
 
-          $('#myTable2').DataTable();
+          $('table.sider').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+              
+            ]
+          });
           $('table.display').DataTable({
             dom: 'Bfrtip',
             buttons: [
@@ -277,6 +282,29 @@
             ]
           });
       } );
+    </script>
+
+    <script type="text/javascript">
+        function toggleFullScreen() {
+          if ((document.fullScreenElement && document.fullScreenElement !== null) ||  
+           (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+            if (document.documentElement.requestFullScreen) {
+              document.documentElement.requestFullScreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+              document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullScreen) {
+              document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+          } else {
+            if (document.cancelFullScreen) {
+              document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+              document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+              document.webkitCancelFullScreen();
+            }
+          }
+        }
     </script>
 
     <!-- Bootstrap -->

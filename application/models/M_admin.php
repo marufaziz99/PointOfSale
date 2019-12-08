@@ -19,6 +19,48 @@
         	return $this->db->count_all_results('staff');
         }
 
+        public function get_menu_basic(){
+        	$this->db->where('id_jenis', 1);
+        	$this->db->from('powder');
+
+        	return $this->db->count_all_results();
+        }
+
+        public function get_menu_pm(){
+        	$this->db->where('id_jenis', 2);
+        	$this->db->from('powder');
+
+        	return $this->db->count_all_results();
+        }
+
+        public function get_menu_soklat(){
+        	$this->db->where('id_jenis', 3);
+        	$this->db->from('powder');
+
+        	return $this->db->count_all_results();
+        }
+
+        public function get_menu_coklat_pm(){
+        	$this->db->where('id_jenis', 4);
+        	$this->db->from('powder');
+
+        	return $this->db->count_all_results();
+        }
+
+        public function get_menu_yakult(){
+        	$this->db->where('id_jenis', 5);
+        	$this->db->from('powder');
+
+        	return $this->db->count_all_results();
+        }
+
+        public function get_menu_juice(){
+        	$this->db->where('id_jenis', 6);
+        	$this->db->from('powder');
+
+        	return $this->db->count_all_results();
+        }
+
         public function get_transaksi_shift1(){
             $currentDate = date('Y-m-d');
 
@@ -89,6 +131,7 @@
             if($id != null){
                 $this->db->where('id_staff', $id);
             }
+            $this->db->where('hak_akses', 'Barista');
 
     		$query = $this->db->get();
     		return $query->result();
