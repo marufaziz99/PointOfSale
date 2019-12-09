@@ -38,7 +38,7 @@
             <table class="table table-striped jambo_table bulk_action" id="myTable">
               <thead>
                 <tr class="headings">
-                  <th class="column-title">Id Regioon </th>
+                  <th class="column-title">No </th>
                   <th class="column-title">Nama Cabang </th>
                   <th class="column-title">Alamat </th>
                   <th class="column-title">Actions</th>
@@ -47,15 +47,16 @@
 
               <tbody>
               	<?php 
+                  $no = 1;
               		foreach ($data_region as $key => $value) {
               			?>
               				<tr>
-              					<td><?=$value->id_region?></td>
+              					<td><?=$no++?></td>
               					<td><?=$value->nama_region?></td>
               					<td><?=$value->alamat?></td>
               					<td align="center">
-              						<a href="<?=base_url('index.php/c_admin/update_data_karyawan/'.$value->id_region)?>" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
-              						<a href="<?=base_url('index.php/c_admin/del_data_karyawan/'.$value->id_region)?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+              						<a href="<?=base_url('index.php/c_admin/update_region/'.$value->id_region)?>" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
+              						<a href="<?=base_url('index.php/c_admin/delete_region/'.$value->id_region)?>" class="btn btn-danger btn-xs tombol-hapus"><i class="fa fa-trash"></i></a>
               					</td>
               				</tr>
               			<?php

@@ -38,7 +38,7 @@
             <table class="table table-striped jambo_table bulk_action" id="myTable">
               <thead>
                 <tr class="headings">
-                  <th class="column-title">Id Diskon </th>
+                  <th class="column-title">No </th>
                   <th class="column-title">Besar Diskon </th>
                   <th class="column-title">Syarat MIn Belanja </th>
                   <th class="column-title">Actions</th>
@@ -47,10 +47,11 @@
 
               <tbody>
               	<?php 
+                  $no = 1;
               		foreach ($data_diskon as $key => $value) {
               			?>
               				<tr>
-              					<td><?=$value->id_diskon?></td>
+              					<td><?=$no++?></td>
               					<td><?=$value->total_diskon?></td>
               					<td><?=$value->min_pembelian?></td>
               					<td align="center">

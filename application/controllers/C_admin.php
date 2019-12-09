@@ -205,12 +205,38 @@ class C_admin extends CI_Controller {
 		}
 	}
 
-	public function update_region(){
-		#code update
+	public function update_region($id){
+		if (isset($_POST['submit'])) {
+			$nama = $this->input->post('nama', TRUE);
+			$alamat = $this->input->post('alamat', TRUE);
+
+			$this->model->update_region($id, $nama, $alamat);
+
+			if($this->db->affected_rows() > 0){
+				$this->session->set_flashdata('flash','Data Region Berhasil Diubah');
+			}
+
+			echo "<script>window.location='".base_url('index.php/c_admin/region')."'</script>";
+		}
+		else{
+			$query = $this->model->get_region($id);
+			if ($query->num_rows() > 0) {
+				$data['region'] = $query->row();
+				$this->template_admin->load('template_admin','admin/region/v_updateRegion', $data);
+			}
+			else{
+				echo "<script>alert('Data Tidak Ditemukan');";
+				echo "window.location='".site_url('index.php/c_admin/region')."'</script>";
+			}
+		}
 	}
 
-	public function delete_region(){
-		#code delete
+	public function delete_region($id){
+		$this->model->delete_region($id);
+		if($this->db->affected_rows() > 0){
+			$this->session->set_flashdata('flash','Data Region Berhasil Dihapus');
+		}
+		echo "<script>window.location='".base_url('index.php/c_admin/region')."'</script>";
 	}
 
 	public function karyawan(){
@@ -241,6 +267,24 @@ class C_admin extends CI_Controller {
 			}
 
 			echo "<script>window.location='".base_url('index.php/c_admin/karyawan')."'</script>";
+		}
+	}
+
+	public function update_karyawan($id){
+		if (isset($_POST['submit'])) {
+			# code...
+		}
+		else{
+			$query = $this->model->get_data_karyawan($id);
+
+			if($query->num_rows() > 0){
+				$data['staff'] = $query->row();
+				$this->template_admin->load('template_admin','admin/karyawan/v_updateKaryawan', $data);
+			}
+			else{
+				echo "<script>alert('Data Tidak Ditemukan');";
+				echo "window.location='".site_url('index.php/c_admin/karyawan')."'</script>";
+			}
 		}
 	}
 }

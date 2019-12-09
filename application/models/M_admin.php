@@ -129,13 +129,12 @@
             if($id != null){
                 $this->db->where('id_region', $id);
                 $query = $this->db->get();
-	    		return $query->row();
+	    		return $query;
             }
             else{
             	$query = $this->db->get();
 	    		return $query->result();
             }
-
     		
     	}
 
@@ -148,16 +147,37 @@
             $this->db->insert('region',$data);
         }
 
+        public function update_region($id, $nama ,$alamat){
+        	$data = array(
+        		'nama_region' => $nama,
+        		'alamat' => $alamat
+        	);
+
+        	$this->db->where('id_region', $id);
+        	$this->db->update('region', $data);
+        }
+
+        public function delete_region($id){
+        	$this->db->where('id_region', $id);
+        	$this->db->delete('region');
+        }
+
     	public function get_data_karyawan($id = null){
     		$this->db->select('*');
     		$this->db->from('staff');
+    		$this->db->where('hak_akses', 'Barista');
             if($id != null){
                 $this->db->where('id_staff', $id);
+                $query = $this->db->get();
+	    		return $query;
             }
-            $this->db->where('hak_akses', 'Barista');
+            else{
+            	$query = $this->db->get();
+	    		return $query->result();
+            }
+            
 
-    		$query = $this->db->get();
-    		return $query->result();
+    		
     	}
 
     	public function insert_karyawan($id, $nama, $username, $password, $kontak, $email, $alamat){
