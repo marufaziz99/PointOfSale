@@ -90,10 +90,13 @@
     		$this->db->from('diskon');
             if($id != null){
                 $this->db->where('id_diskon', $id);
+                $query = $this->db->get();
+	    		return $query;
             }
-
-    		$query = $this->db->get();
-    		return $query->result();
+            else{
+				$query = $this->db->get();
+	    		return $query->result();
+            }    		
     	}
 
         public function insert_diskon($nominal, $min_pembelian){
@@ -105,15 +108,35 @@
             $this->db->insert('diskon', $data);
         }
 
+        public function update_diskon($id, $total, $min_pembelian){
+        	$data = array(
+        		'total_diskon' => $total,
+        		'min_pembelian' => $min_pembelian
+        	);
+
+        	$this->db->where('id_diskon', $id);
+        	$this->db->update('diskon', $data);
+        }
+
+        public function delete_diskon($id){
+        	$this->db->where('id_diskon', $id);
+        	$this->db->delete('diskon');
+        }
+
     	public function get_region($id = null){
     		$this->db->select('*');
     		$this->db->from('region');
             if($id != null){
                 $this->db->where('id_region', $id);
+                $query = $this->db->get();
+	    		return $query->row();
+            }
+            else{
+            	$query = $this->db->get();
+	    		return $query->result();
             }
 
-    		$query = $this->db->get();
-    		return $query->result();
+    		
     	}
 
         public function insert_region($nama , $alamat){

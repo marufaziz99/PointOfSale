@@ -33,6 +33,9 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets_admin/Datatables/DataTables-1.10.18/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets_admin/Datatables/Buttons-1.5.6/css/buttons.dataTables.min.css">
 
+    <!-- jQuery -->
+    <script src="<?=base_url()?>assets_admin/vendors/jquery/dist/jquery.min.js"></script>
+
 
 
   </head>
@@ -230,8 +233,7 @@
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="<?=base_url()?>assets_admin/vendors/jquery/dist/jquery.min.js"></script>
+    
 
     <!-- datatables -->
     <!-- <script src="<?=base_url()?>assets_admin/Datatables/jQuery-3.3.1/jquery-3.3.1.js"></script> -->

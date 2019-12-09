@@ -144,12 +144,40 @@ class C_admin extends CI_Controller {
 		}
 	}
 
-	public function update_diskon(){
-		#code update...
+	public function update_diskon($id){
+		if (isset($_POST['submit'])) {
+			// $id = $this->input->post('id', TRUE);
+			$total = $this->input->post('nominal', TRUE);
+			$min_pembelian = $this->input->post('min_pembelian', TRUE);
+
+			$query = $this->model->update_diskon($id, $total, $min_pembelian);
+			if($this->db->affected_rows() > 0){
+				$this->session->set_flashdata('flash','Data Diskon Berhasil Diubah');
+			}
+
+			echo "<script>window.location='".base_url('index.php/c_admin/discount')."'</script>";
+		}
+		else{
+			$query = $this->model->get_diskon($id);
+			if($query->num_rows() > 0){
+				$data['diskon'] = $query->row();
+				$this->template_admin->load('template_admin','admin/diskon/v_updateDiskon', $data);
+			}
+			else{
+				echo "<script>alert('Data Tidak Ditemukan');";
+				echo "window.location='".site_url('index.php/c_admin/diskon')."'</script>";
+			}
+		}
 	}
 
-	public function delete_diskon(){
-		#code delete ...
+	public function delete_diskon($id){
+		$this->model->delete_diskon($id);
+
+		if($this->db->affected_rows() > 0){
+			$this->session->set_flashdata('flash','Data Diskon Berhasil Dihapus');
+		}
+
+		echo "<script>window.location='".base_url('index.php/c_admin/discount')."'</script>";
 	}
 
 	public function region(){

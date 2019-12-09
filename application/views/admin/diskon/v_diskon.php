@@ -54,8 +54,8 @@
               					<td><?=$value->total_diskon?></td>
               					<td><?=$value->min_pembelian?></td>
               					<td align="center">
-              						<a href="<?=base_url('index.php/c_admin/update_data_karyawan/'.$value->id_diskon)?>" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
-              						<a href="<?=base_url('index.php/c_admin/del_data_karyawan/'.$value->id_diskon)?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+              						<a href="<?=base_url('index.php/c_admin/update_diskon/'.$value->id_diskon)?>" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
+              						<a href="<?=base_url('index.php/c_admin/delete_diskon/'.$value->id_diskon)?>" class="btn btn-danger btn-xs tombol-hapus"><i class="fa fa-trash"></i></a>
               					</td>
               				</tr>
               			<?php
