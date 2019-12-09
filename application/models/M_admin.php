@@ -174,10 +174,8 @@
             else{
             	$query = $this->db->get();
 	    		return $query->result();
-            }
-            
-
-    		
+            }          
+   		
     	}
 
     	public function insert_karyawan($id, $nama, $username, $password, $kontak, $email, $alamat){
@@ -192,6 +190,28 @@
             );
 
             $this->db->insert('staff', $data);
+        }
+
+        public function update_karyawan($id, $nama, $username, $password, $kontak, $email, $alamat){
+            $data = array(
+                'Nama' => $nama,
+                'username' => $username,
+                'contact' =>$kontak,
+                'alamat' => $alamat,
+                'email' => $email
+            );
+
+            if (!empty($password)) {
+                $data['password'] = $password;
+            }
+
+            $this->db->where('id_staff', $id);
+            $this->db->update('staff', $data);
+        }
+
+        public function delete_karyawan($id){
+            $this->db->where('id_staff', $id);
+            $this->db->delete('staff');
         }
 
     }

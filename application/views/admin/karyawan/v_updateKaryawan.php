@@ -62,7 +62,7 @@
                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12" style="top: 20px;">Password <span class="required">*</span></label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                 	<label style="color: red;"><small><i>Kosongkan Jika Tidak Merubah Password</i></small></label>
-                  <input id="middle-name" class="form-control col-md-7 col-xs-12" type="Password" name="password" required="required" placeholder="ex : xxxxxxxxx">
+                  <input id="middle-name" class="form-control col-md-7 col-xs-12" type="Password" name="password" placeholder="ex : xxxxxxxxx">
                 </div>
               </div>
 

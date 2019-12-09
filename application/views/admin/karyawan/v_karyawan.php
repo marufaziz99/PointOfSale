@@ -68,7 +68,7 @@
               					<!-- <td><?=$value->image?></td> -->
               					<td>
               						<a href="<?=base_url('index.php/c_admin/update_karyawan/'.$value->id_staff)?>" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
-              						<a href="<?=base_url('index.php/c_admin/del_data_karyawan/'.$value->id_staff)?>" class="btn btn-danger btn-xs tombol-hapus"><i class="fa fa-trash"></i></a>
+              						<a href="<?=base_url('index.php/c_admin/delete_karyawan/'.$value->id_staff)?>" class="btn btn-danger btn-xs tombol-hapus"><i class="fa fa-trash"></i></a>
               					</td>
               				</tr>
               			<?php

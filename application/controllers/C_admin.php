@@ -272,7 +272,19 @@ class C_admin extends CI_Controller {
 
 	public function update_karyawan($id){
 		if (isset($_POST['submit'])) {
-			# code...
+			$nama = $this->input->post('nama',TRUE);
+			$username = $this->input->post('username', TRUE);
+			$password = $this->input->post('password', TRUE);
+			$kontak = $this->input->post('kontak', TRUE);
+			$email = $this->input->post('email', TRUE);
+			$alamat = $this->input->post('alamat',TRUE);
+
+			$this->model->update_karyawan($id, $nama, $username, $password, $kontak, $email, $alamat);
+			if ($this->db->affected_rows() > 0) {
+				$this->session->set_flashdata('flash','Data Karyawan Berhasil DiUbah');
+			}
+
+			echo "<script>window.location='".base_url('index.php/c_admin/karyawan')."'</script>";
 		}
 		else{
 			$query = $this->model->get_data_karyawan($id);
@@ -286,5 +298,15 @@ class C_admin extends CI_Controller {
 				echo "window.location='".site_url('index.php/c_admin/karyawan')."'</script>";
 			}
 		}
+	}
+
+	public function delete_karyawan($id){
+		$this->model->delete_karyawan($id);
+
+		if($this->db->affected_rows () > 0){
+			$this->session->set_flashdata('flash','Data Karyawan Berhasil Dihapus');
+		}
+
+		echo "<script>window.location='".base_url('index.php/c_admin/karyawan')."'</script>";
 	}
 }
