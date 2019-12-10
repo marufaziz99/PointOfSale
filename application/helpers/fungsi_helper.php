@@ -18,14 +18,23 @@ function check_not_login()
 	}
 }
 
-// function check_admin()
-// {
-// 	$ci =& get_instance();
-// 	$ci->load->library('fungsi');
-// 	if($ci->fungsi->user_login()->level != 1)
-// 	{
-// 		redirect(base_url('index.php/c_barista'));
-// 	}
-// }
+function check_admin()
+{
+	$ci =& get_instance();
+	$ci->load->library('fungsi');
+	if($ci->fungsi->user_login()->level != 'Admin')
+	{
+		redirect(base_url('index.php/c_barista'));	
+	}
+}
+
+function check_user(){
+	$ci =& get_instance();
+	$ci->load->library('fungsi');
+	if($ci->fungsi->user_login()->level != 'Barista')
+	{
+		redirect(base_url('index.php/c_admin'));
+	}
+}
 
 ?>

@@ -5,6 +5,7 @@ class C_barista extends CI_Controller {
 
     function __construct(){
 		parent::__construct();
+		check_user();
 		check_not_login();
         $this->load->library('form_validation');
         $this->load->model('m_barista', 'model');
