@@ -24,18 +24,18 @@ class Auth extends CI_Controller {
 				$params = array(
 					'id_staff' => $row->id_staff,
 					'id_region' => 1,
-					'level' => $row->hak_akses
+					'level' => $row->level
                     // 'id_jadwal' => $row->id_jadwal
                 );
                 $this->session->set_userdata($params);
-                $level = $row->hak_akses;
+                $level = $row->level;
 
 				// $this->session->set_flashdata('flash','Login Berhasil');	
 
-				if($level == "Admin"){
+				if($level == 1){
 					echo "<script>window.location='".site_url('index.php/c_admin')."'</script>";
 				}		
-				else if($level == "Barista"){
+				else if($level == 2){
 					echo "<script>window.location='".site_url('index.php/c_barista')."'</script>";
 				}
 				else{

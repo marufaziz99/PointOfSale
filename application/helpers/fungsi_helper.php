@@ -22,7 +22,7 @@ function check_admin()
 {
 	$ci =& get_instance();
 	$ci->load->library('fungsi');
-	if($ci->fungsi->user_login()->level != 'Admin')
+	if($ci->fungsi->user_login()->level != 1)
 	{
 		redirect(base_url('index.php/c_barista'));	
 	}
@@ -31,7 +31,7 @@ function check_admin()
 function check_user(){
 	$ci =& get_instance();
 	$ci->load->library('fungsi');
-	if($ci->fungsi->user_login()->level != 'Barista')
+	if($ci->fungsi->user_login()->level != 2)
 	{
 		redirect(base_url('index.php/c_admin'));
 	}

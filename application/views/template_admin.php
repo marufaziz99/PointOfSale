@@ -108,7 +108,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?=base_url('index.php/auth/logout')?>">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?=base_url('index.php/auth/logout')?>" class="log-out">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -284,6 +284,29 @@
             ]
           });
       } );
+    </script>
+
+    <script>
+      
+      $('.log-out').on('click', function(e){
+        e.preventDefault();
+        const href = $(this).attr('href');
+
+        Swal.fire({
+          title: 'Apakah Anda Yakin?',
+          text: "Log Out ",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes !'
+        }).then((result) => {
+          if (result.value) {
+              document.location.href = href;
+          }
+        })
+      });
+
     </script>
 
     <script type="text/javascript">
