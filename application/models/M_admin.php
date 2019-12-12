@@ -142,6 +142,16 @@
         	$this->db->delete('topping');
         }
 
+        public function get_ekstra($id = null){
+        	$this->db->select('*');
+        	$this->db->from('ekstra');
+        	if ($id != null) {
+        		$this->db->where('id_ekstra', $id);
+        		$query = $this->db->get();
+        		return $query;
+        	}
+        }
+
         public function get_id_ekstra($nama, $satuan, $region){
         	$this->db->select('*');
         	$this->db->from('ekstra');
@@ -180,8 +190,26 @@
         	}
         }
 
-        public function update_ekstra(){
-        	#.....
+        public function update_ekstra($id, $nama, $sisa, $penambahan, $satuan){
+        	$data = array();
+
+        	if(!empty($nama)){
+        		$data['nama_ekstra'] = $nama;
+        	}
+
+        	if(!empty($satuan)){
+        		$data['satuan'] = $satuan;
+        	}
+
+        	if (!empty($penambahan)) {
+        		$data['stock_awal'] = $sisa;
+        		$data['penambahan'] = $penambahan;
+        		$data['total'] = $sisa + $penambahan;
+        		$data['sisa'] = $data['total'];
+        	}
+
+        	$this->db->where('id_ekstra', $id);
+        	$this->db->update('ekstra', $data);
         }
 
         public function delete_ekstra($id){

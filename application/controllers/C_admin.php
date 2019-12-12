@@ -214,7 +214,36 @@ class C_admin extends CI_Controller {
 	}
 
 	public function update_ekstra($id){
-		#....
+		if (isset($_POST['submit'])) {
+			$nama = $this->input->post('nama', TRUE);
+			$sisa = $this->input->post('sisa', TRUE);
+			$satuan = $this->input->post('satuan', TRUE);
+			$penambahan = $this->input->post('penambahan', TRUE);
+
+			$this->model->update_ekstra($id, $nama, $sisa, $penambahan, $satuan);
+
+			if ($this->db->affected_rows() > 0) {
+				$this->session->set_flashdata('flash','Data Ekstra Berhasil Diubah');
+			}
+			echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
+		}
+		else{
+			$data = array(
+				'region' => $this->model->get_region()
+			);
+
+			$query = $this->model->get_ekstra($id);
+
+			if ($query->num_rows() > 0) {
+				$data['ekstra'] = $query->row();
+				$this->template_admin->load('template_admin','admin/inventory/ekstra/v_updateEkstra', $data);
+			}
+			else{
+				echo "<script>alert('Data Tidak Ditemukan');";
+				echo "window.location='".site_url('index.php/c_admin/inventory')."'</script>";
+			}
+			
+		}
 	}
 
 	public function delete_ekstra($id){

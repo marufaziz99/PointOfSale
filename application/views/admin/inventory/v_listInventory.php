@@ -272,7 +272,7 @@
 																						<td><?php echo $hasil['nama_ekstra']; ?></td>
 																						<td><?php echo $hasil['sisa'] ?> <?php echo $hasil['satuan'] ?></td>
 																						<td>
-																							<a href="#"><button type="button" class="btn-detail-ekstra mb-xs mt-xs mr-xs btn btn-xs btn-success"><i class="fa fa-search"></i></button></a>
+																							<a href="<?=base_url('index.php/c_admin/update_ekstra/'.$hasil['id_ekstra'])?>" class="btn-detail-ekstra mb-xs mt-xs mr-xs btn btn-xs btn-success"><i class="fa fa-search"></i></a>
 																							<a href="<?=base_url('index.php/c_admin/delete_ekstra/'.$hasil['id_ekstra'])?>" class="tombol-hapus btn-hapus-ekstra mb-xs mt-xs mr-xs btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></a>
 																						</td>
 																					</tr>
