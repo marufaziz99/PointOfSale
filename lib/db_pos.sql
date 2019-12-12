@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2019 at 04:17 AM
+-- Generation Time: Dec 12, 2019 at 02:16 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -378,8 +378,7 @@ CREATE TABLE `region` (
 
 INSERT INTO `region` (`id_region`, `nama_region`, `alamat`) VALUES
 (1, 'Seturan', 'Jl. Seturan Raya'),
-(2, 'Kaliurang', 'Jl. Kaliurang'),
-(3, 'Janti', 'jl janti no 123');
+(2, 'UGM', 'Jl. Kaliurang');
 
 -- --------------------------------------------------------
 
@@ -396,19 +395,19 @@ CREATE TABLE `staff` (
   `alamat` text NOT NULL,
   `email` varchar(50) NOT NULL,
   `image` varchar(100) NOT NULL,
-  `hak_akses` enum('Admin','Barista') NOT NULL DEFAULT 'Barista'
+  `level` int(1) NOT NULL DEFAULT '2' COMMENT '''1 : Admin'',''2 : Barista'''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`id_staff`, `Nama`, `username`, `password`, `contact`, `alamat`, `email`, `image`, `hak_akses`) VALUES
-('S0000', 'Maruf Aziz Muzani', 'marufaziz', 'barbar', '081328455575', 'Jl. Kalasan', '42d@gmail.com', 'icon.png', 'Admin'),
-('S0001', 'kiki', 'kiki', 'kiki', '0819556564', 'sleman', 'oke@gmail.com', '', 'Barista'),
-('S0002', 'Melon', 'melon', 'poltergeist', '0853', 'skip', 'm.taftazani123@gmail.com', '', 'Barista'),
-('S0003', 'Kocheng', 'Kocheng', 'barbar', '0812345678900', 'jogja', 'kocheng@gmail.com', '', 'Barista'),
-('S0004', 'Oyen', 'Oyen', 'oyen', '08', 'jalanan', 'barbar@gmail.com', '', 'Barista');
+INSERT INTO `staff` (`id_staff`, `Nama`, `username`, `password`, `contact`, `alamat`, `email`, `image`, `level`) VALUES
+('S0000', 'Maruf Aziz Muzani', 'marufaziz', 'barbar', '081328455575', 'Jl. Kalasan', '42d@gmail.com', 'icon.png', 1),
+('S0001', 'kiki', 'kiki', 'kiki', '0819556564', 'sleman', 'oke@gmail.com', '', 2),
+('S0002', 'Melon', 'melon', 'poltergeist', '0853', 'skip', 'm.taftazani123@gmail.com', '', 2),
+('S0003', 'Kocheng', 'Kocheng', 'barbar', '0812345678900', 'jogja', 'kocheng@gmail.com', '', 2),
+('S0004', 'Oyen', 'Oyen', 'oyen', '08', 'jalanan', 'barbar@gmail.com', '', 2);
 
 -- --------------------------------------------------------
 
@@ -435,7 +434,7 @@ INSERT INTO `topping` (`id_topping`, `nama_topping`, `harga`, `stock_awal`, `pen
 (24, 'Bubble', 3000, 10, 5, 15, 14, 1),
 (25, 'Jelly', 3000, 15, 0, 15, 14, 1),
 (26, 'Oreo', 3000, 17, 0, 17, 16, 1),
-(27, 'Aloevera', 3000, 15, 0, 15, 15, 1),
+(27, 'Aloevera', 3000, 15, 10, 25, 25, 1),
 (28, 'Popping Boba', 4000, 25, 0, 25, 25, 1),
 (29, 'Rainbow Jelly', 4000, 30, 0, 30, 30, 1);
 
@@ -583,7 +582,7 @@ ALTER TABLE `varian_powder`
 -- AUTO_INCREMENT for table `diskon`
 --
 ALTER TABLE `diskon`
-  MODIFY `id_diskon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_diskon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ekstra`
@@ -619,13 +618,13 @@ ALTER TABLE `powder`
 -- AUTO_INCREMENT for table `region`
 --
 ALTER TABLE `region`
-  MODIFY `id_region` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_region` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `topping`
 --
 ALTER TABLE `topping`
-  MODIFY `id_topping` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_topping` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `varian_powder`
