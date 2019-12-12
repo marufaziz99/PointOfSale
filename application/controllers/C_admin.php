@@ -117,6 +117,68 @@ class C_admin extends CI_Controller {
 		$this->template_admin->load('template_admin','admin/inventory/v_listInventory', $data);
 	}
 
+	public function insert_topping(){
+		if (isset($_POST['submit'])) {
+			$nama_topping = $this->input->post('nama',TRUE);
+			$harga = $this->input->post('harga', TRUE);
+			$stok = $this->input->post('stok', TRUE);
+			$region = $this->input->post('region', TRUE);
+
+			$this->model->insert_topping($nama_topping, $harga, $stok, $region);
+
+			if ($this->db->affected_rows() > 0) {
+				$this->session->set_flashdata('flash','Data Topping Berhasil Ditambahkan');
+			}
+
+			echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
+
+		}
+		else{
+			$data = array(
+				'region' => $this->model->get_region()
+			);
+			$this->template_admin->load('template_admin','admin/inventory/topping/v_addTopping', $data);
+		}
+	}
+
+	public function update_topping($id){
+		if (isset($_POST['submit'])) {
+			$nama = $this->input->post('nama', TRUE);
+			$harga = $this->input->post('harga', TRUE);
+			$penambahan = $this->input->post('penambahan', TRUE);
+			$sisa = $this->input->post('sisa', TRUE);
+
+			$this->model->update_topping($id, $nama, $harga, $penambahan, $sisa);
+
+			if($this->db->affected_rows() > 0){
+				$this->session->set_flashdata('flash','Data Topping Berhasil Diubah');
+			}
+			echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
+		}
+		else{
+			$query = $this->model->get_topping($id);
+			if($query->num_rows() > 0){
+				$data['topping'] = $query->row();
+				$this->template_admin->load('template_admin','admin/inventory/topping/v_updateTopping', $data);
+			}
+			else{
+				echo "<script>alert('Data Tidak Ditemukan');";
+				echo "window.location='".site_url('index.php/c_admin/inventory')."'</script>";
+			}
+			
+		}
+	}
+
+	public function delete_topping($id){
+		$this->model->delete_topping($id);
+
+		if ($this->db->affected_rows() > 0) {
+			$this->session->set_flashdata('flash','Data Topping Berhasil Dihapus');
+		}
+
+		echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
+	}
+
 	public function discount(){
 		$data = array(
 			'data_diskon' => $this->model->get_diskon()

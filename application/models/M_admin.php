@@ -16,7 +16,9 @@
         }
 
         public function get_count_karyawan(){
-        	return $this->db->count_all_results('staff');
+        	$this->db->where('level', 2);
+        	$this->db->from('staff');
+        	return $this->db->count_all_results();
         }
 
         public function get_menu_basic(){
@@ -83,6 +85,61 @@
             $sql = $this->db->query("SELECT * FROM jual WHERE tanggal = '$currentDate'");
 
             return $sql->result(); 
+        }
+
+        public function get_topping($id = null){
+        	$this->db->select('*');
+        	$this->db->from('topping');
+        	if($id != null){
+                $this->db->where('id_topping', $id);
+                $query = $this->db->get();
+	    		return $query;
+            }
+            else{
+				$query = $this->db->get();
+	    		return $query->result();
+            } 
+        }
+
+        public function insert_topping($nama, $harga, $stok, $region){
+        	$data = array(
+        		'nama_topping' => $nama,
+        		'harga' => $harga,
+        		'stock_awal' => $stok,
+        		'penambahan' => 0,
+        		'total' => $stok,
+        		'sisa' => $stok,
+        		'id_region' => $region
+        	);
+
+        	$this->db->insert('topping', $data);
+        }
+
+        public function update_topping($id, $nama, $harga, $penambahan, $sisa){
+        	$data = array();
+
+        	if (!empty($nama)) {
+        		$data['nama_topping'] = $nama;
+        	}
+
+        	if (!empty($harga)) {
+        		$data['harga'] = $harga;
+        	}
+
+        	if (!empty($penambahan)) {
+        		$data['stock_awal'] = $sisa;
+        		$data['penambahan'] = $penambahan;
+        		$data['total'] = $sisa + $penambahan;
+        		$data['sisa'] = $data['total'];
+        	}
+
+        	$this->db->where('id_topping', $id);
+        	$this->db->update('topping', $data);
+        }
+
+        public function delete_topping($id){
+        	$this->db->where('id_topping', $id);
+        	$this->db->delete('topping');
         }
 
     	public function get_diskon($id = null){
@@ -165,7 +222,7 @@
     	public function get_data_karyawan($id = null){
     		$this->db->select('*');
     		$this->db->from('staff');
-    		$this->db->where('hak_akses', 'Barista');
+    		$this->db->where('level', 2);
             if($id != null){
                 $this->db->where('id_staff', $id);
                 $query = $this->db->get();

@@ -156,7 +156,7 @@
 		              </div>
 
 		              <div class="x_content">
-		              	<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> ADD</a>
+		              	<a href="<?=base_url('index.php/c_admin/insert_topping')?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> ADD</a>
 		              </div>
 
 		          		<div class="x_content" role="tabpanel" data-example-id="togglable-tabs">
@@ -198,9 +198,9 @@
 																						<td><?php echo $topping['nama_topping']; ?></td>
 																						<td><?php echo $topping['sisa'] ?></td>
 																						<td>
-																							<a href="#"><button type="button" class="btn-detail-topping mb-xs mt-xs mr-xs btn btn-xs btn-success"><i class="fa fa-search"></i></button></a>
+																							<a href="<?=base_url('index.php/c_admin/update_topping/'.$topping['id_topping'])?>" class="mb-xs mt-xs mr-xs btn btn-xs btn-success"><i class="fa fa-search"></i></a>
 																							<!-- <a href="#"><button type="button" class="btn-edit-topping mb-xs mt-xs mr-xs btn btn-xs btn-warning"><i class="fa fa-pencil"></i></button></a> -->
-																							<a href="#"><button type="button" class="btn-hapus-topping mb-xs mt-xs mr-xs btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></button></a>
+																							<a href="<?=base_url('index.php/c_admin/delete_topping/'.$topping['id_topping'])?>" class="tombol-hapus mb-xs mt-xs mr-xs btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></a>
 																						</td>
 																					</tr>
 																				<?php
