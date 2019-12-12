@@ -142,6 +142,53 @@
         	$this->db->delete('topping');
         }
 
+        public function get_id_ekstra($nama, $satuan, $region){
+        	$this->db->select('*');
+        	$this->db->from('ekstra');
+        	$this->db->where('nama_ekstra', $nama);
+        	$this->db->where('satuan', $satuan);
+        	$this->db->where('id_region', $region);
+
+        	$query = $this->db->get();
+
+        	return $query;
+        }
+
+        public function insert_ekstra($nama, $stok, $satuan, $region){
+        	$data = array(
+        		'nama_ekstra' => $nama,
+        		'stock_awal' => $stok, 
+        		'penambahan' => 0,
+        		'total' => $stok,
+        		'sisa' => $stok,
+        		'satuan' => $satuan,
+        		'id_region' => $region
+         	);
+
+         	$this->db->insert('ekstra', $data);
+        }
+
+        public function insert_detail_ekstra($id){
+        	for ($i=1; $i <=6 ; $i++) { 
+        		$data = array(
+        			'id_ekstra' => $id,
+        			'id_jenis' => $i,
+        			'pemakaian' => 0
+        		);
+
+        		$this->db->insert('detail_ekstra', $data);
+        	}
+        }
+
+        public function update_ekstra(){
+        	#.....
+        }
+
+        public function delete_ekstra($id){
+        	$this->db->where('id_ekstra', $id);
+        	$this->db->delete('ekstra');
+        }
+
     	public function get_diskon($id = null){
     		$this->db->select('*');
     		$this->db->from('diskon');

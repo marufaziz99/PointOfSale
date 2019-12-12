@@ -61,7 +61,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2><?=$this->fungsi->user_login()->Nama?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -84,7 +84,7 @@
                   <li><a><i class="fa fa-list"></i> Inventaris <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?=base_url('index.php/c_admin/inventory')?>">Daftar Stok</a></li>
-                      <li><a href="#">Import Data Stok</a></li>
+                      <li><a href="<?=base_url('index.php/c_admin/upload_file')?>">Import Data Stok</a></li>
                     </ul>
                   </li>
                   <li><a href="<?=base_url('index.php/c_admin/discount')?>"><i class="fa fa-money"></i> Diskon</a></li>
@@ -127,23 +127,23 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<?=base_url()?>assets_admin/production/images/img.jpg" alt="">John Doe
+                    <img src="<?=base_url()?>assets_admin/production/images/img.jpg" alt=""><?=$this->fungsi->user_login()->Nama?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
+                    <li><a href="#"> Profile</a></li>
+                    <!-- <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
                         <span>Settings</span>
                       </a>
                     </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="<?=base_url('index.php/auth/logout')?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="javascript:;">Help</a></li> -->
+                    <li><a href="<?=base_url('index.php/auth/logout')?>" class="log-out"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
-                <li role="presentation" class="dropdown">
+                <!-- <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
                     <span class="badge bg-green">6</span>
@@ -206,7 +206,7 @@
                       </div>
                     </li>
                   </ul>
-                </li>
+                </li> -->
               </ul>
             </nav>
           </div>

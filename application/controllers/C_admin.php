@@ -179,6 +179,58 @@ class C_admin extends CI_Controller {
 		echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
 	}
 
+	public function insert_ekstra(){
+		if (isset($_POST['submit'])) {
+			$nama = $this->input->post('nama', TRUE);
+			$stok = $this->input->post('stok', TRUE);
+			$satuan = $this->input->post('satuan', TRUE);
+			$region = $this->input->post('id_region', TRUE);
+
+			$this->model->insert_ekstra($nama, $stok, $satuan, $region);
+			if($this->db->affected_rows() > 0){
+				$query = $this->model->get_id_ekstra($nama, $satuan, $region);
+
+				if($query->num_rows() > 0){
+					$row = $query->row();
+
+					$id_ekstra = $row->id_ekstra;
+
+					$this->model->insert_detail_ekstra($id_ekstra);
+
+					if ($this->db->affected_rows() > 0) {
+						$this->session->set_flashdata('flash','Data Ekstra Berhasil Disimpan');
+					}
+				}
+				
+			}
+			echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
+		}
+		else{
+			$data = array(
+				'region' => $this->model->get_region()
+			);
+			$this->template_admin->load('template_admin','admin/inventory/ekstra/v_addEkstra', $data);
+		}		
+	}
+
+	public function update_ekstra($id){
+		#....
+	}
+
+	public function delete_ekstra($id){
+		$this->model->delete_ekstra($id);
+
+		if ($this->db->affected_rows > 0) {
+			$this->session->set_flashdata('flash','Data Ekstra Berhasil Dihapus');
+		}
+
+		echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
+	}
+
+	public function upload_file(){
+		$this->template_admin->load('template_admin','admin/inventory/upload/v_uploadData');
+	}
+
 	public function discount(){
 		$data = array(
 			'data_diskon' => $this->model->get_diskon()

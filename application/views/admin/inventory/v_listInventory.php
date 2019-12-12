@@ -7,7 +7,7 @@
 						<div class="row top_tiles" style="margin: 1px;">
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: #008B8B;"></i></div>
                   <div class="count"><?=$basic?></div>
                   <br>
                   <h3>Basic</h3>
@@ -15,7 +15,7 @@
               </div>
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: #008B8B;"></i></div>
                   <div class="count"><?=$pm?><small></small></div>
                   <br>
                   <h3>Premium</h3>
@@ -23,7 +23,7 @@
               </div>
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: #008B8B;"></i></div>
                   <div class="count"><?=$soklat?></div>
                   <br>
                   <h3>Soklat</h3>
@@ -31,7 +31,7 @@
               </div>
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: #008B8B;"></i></div>
                   <div class="count"><?=$coklat_pm?></div>
                   <br>
                   <h3>Choco Premium</h3>
@@ -39,7 +39,7 @@
               </div>
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: #008B8B;"></i></div>
                   <div class="count"><?=$yakult?></div>
                   <br>
                   <h3>Yakult</h3>
@@ -47,7 +47,7 @@
               </div>
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: #008B8B;"></i></div>
                   <div class="count"><?=$juice?></div>
                   <br>
                   <h3>Fresh And Juice</h3>
@@ -233,7 +233,7 @@
 		              </div>
 
 		              <div class="x_content">
-		              	<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> ADD</a>
+		              	<a href="<?=base_url('index.php/c_admin/insert_ekstra')?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> ADD</a>
 		              </div>
 
 		          		<div class="x_content" role="tabpanel" data-example-id="togglable-tabs">
@@ -269,14 +269,11 @@
 																			while ($hasil = mysqli_fetch_array($ekstra)) {
 																				?>
 																					<tr class="gradeX">
-																						<!-- <td style="display:none;" id="aidi"><?php echo $hasil['id_ekstra']; ?></td> -->
 																						<td><?php echo $hasil['nama_ekstra']; ?></td>
 																						<td><?php echo $hasil['sisa'] ?> <?php echo $hasil['satuan'] ?></td>
-																						<!-- <td style="display:none" id="region"><?php echo $hasil['id_region'] ?></td> -->
 																						<td>
 																							<a href="#"><button type="button" class="btn-detail-ekstra mb-xs mt-xs mr-xs btn btn-xs btn-success"><i class="fa fa-search"></i></button></a>
-																							<!-- <a href="#"><button type="button" class="btn-edit-ekstra mb-xs mt-xs mr-xs btn btn-xs btn-warning"><i class="fa fa-pencil"></i></button></a> -->
-																							<a href="#"><button type="button" class="btn-hapus-ekstra mb-xs mt-xs mr-xs btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></button></a>
+																							<a href="<?=base_url('index.php/c_admin/delete_ekstra/'.$hasil['id_ekstra'])?>" class="tombol-hapus btn-hapus-ekstra mb-xs mt-xs mr-xs btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></a>
 																						</td>
 																					</tr>
 																				<?php 
