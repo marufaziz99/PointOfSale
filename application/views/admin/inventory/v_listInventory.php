@@ -7,7 +7,7 @@
 						<div class="row top_tiles" style="margin: 1px;">
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
                   <div class="count"><?=$basic?></div>
                   <br>
                   <h3>Basic</h3>
@@ -15,7 +15,7 @@
               </div>
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
                   <div class="count"><?=$pm?><small></small></div>
                   <br>
                   <h3>Premium</h3>
@@ -23,7 +23,7 @@
               </div>
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
                   <div class="count"><?=$soklat?></div>
                   <br>
                   <h3>Soklat</h3>
@@ -31,7 +31,7 @@
               </div>
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
                   <div class="count"><?=$coklat_pm?></div>
                   <br>
                   <h3>Choco Premium</h3>
@@ -39,7 +39,7 @@
               </div>
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
                   <div class="count"><?=$yakult?></div>
                   <br>
                   <h3>Yakult</h3>
@@ -47,7 +47,7 @@
               </div>
               <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-glass"></i></div>
+                  <div class="icon"><i class="fa fa-glass" style="color: blue;"></i></div>
                   <div class="count"><?=$juice?></div>
                   <br>
                   <h3>Fresh And Juice</h3>

@@ -37,7 +37,7 @@
             	<div class="row">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama Topping <span class="required">*</span></label>
             		<div class="col-md-6 col-sm-6 col-xs-10 form-group has-feedback">
-	                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : oreo" name="nama" disabled value="<?=$topping->nama_topping?>">	                
+	                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : oreo" name="nama" required="" disabled value="<?=$topping->nama_topping?>">	                
 	              </div>
 	              <div class="col-md-1 col-lg-1">
 	              	<a class="btn btn-sm btn-info" onclick="enable_text();"><i class="fa fa-pencil"></i></a>
@@ -48,7 +48,7 @@
             	<div class="row">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Harga <span class="required">*</span></label>
             		<div class="col-md-6 col-sm-6 col-xs-10 form-group has-feedback">
-	                <input type="number" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ex: 50000" disabled name="harga" value="<?=$topping->harga?>">
+	                <input type="number" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ex: 50000" name="harga" required="" disabled value="<?=$topping->harga?>">
 	                <span class="form-control-feedback left" aria-hidden="true">Rp.</span>
 	              </div>
 	              <div class="col-md-1 col-lg-1">
@@ -59,7 +59,7 @@
             	<div class="row">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Sisa Stok <span class="required">*</span></label>
             		<div class="col-md-6 col-sm-6 col-xs-10 form-group has-feedback">
-	                <input type="number" class="form-control" id="inputSuccess3" placeholder="ex: 50000" disabled name="harga" value="<?=$topping->sisa?>">
+	                <input type="number" class="form-control" id="inputSuccess3" placeholder="ex: 50000" required="" disabled value="<?=$topping->sisa?>">
 	                <input type="hidden" name="sisa" value="<?=$topping->sisa?>">
 	              </div>
             	</div>
@@ -67,7 +67,7 @@
             	<div class="row">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Penambahan Stok <span class="required">*</span></label>
             		<div class="col-md-6 col-sm-6 col-xs-10 form-group has-feedback">
-	                <input type="number" class="form-control" id="inputSuccess3" placeholder="ex : 10" name="penambahan" disabled="">
+	                <input type="number" class="form-control" id="inputSuccess3" placeholder="ex : 10" required="" name="penambahan" disabled="">
 	              </div>
 	              <div class="col-md-1 col-lg-1">
 	              	<a class="btn btn-sm btn-info" onclick="enable_stok();"><i class="fa fa-pencil"></i></a>

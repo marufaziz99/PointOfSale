@@ -37,14 +37,14 @@
             	<div class="row">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama Topping <span class="required">*</span></label>
             		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-	                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : oreo" name="nama">
+	                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : oreo" name="nama" required="">
 	              </div>
             	</div>
               
             	<div class="row">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Harga <span class="required">*</span></label>
             		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-	                <input type="number" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ex: 50000" name="harga">
+	                <input type="number" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ex: 50000" name="harga" required="">
 	                <span class="form-control-feedback left" aria-hidden="true">Rp.</span>
 	              </div>
             	</div>  
@@ -52,14 +52,14 @@
             	<div class="row">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Stok <span class="required">*</span></label>
             		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-	                <input type="number" class="form-control" id="inputSuccess3" placeholder="ex : 10" name="stok">
+	                <input type="number" class="form-control" id="inputSuccess3" placeholder="ex : 10" name="stok" required="">
 	              </div>
             	</div>
 
             	<div class="row">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Region <span class="required">*</span></label>
             		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-	                <select class="form-control" name="region">
+	                <select class="form-control" name="region" required="">
 	                	<optgroup label="Region">
 	                		<option value="">-- Pilih Region --</option>
 	                		<?php
