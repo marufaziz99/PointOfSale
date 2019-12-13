@@ -54,7 +54,7 @@
 	              <label class="control-label col-md-1 col-sm-1 col-xs-12" for="last-name">Satuan <span class="required">*</span></label>
             		<div class="col-md-3 col-sm-3 col-xs-10 form-group has-feedback">
             			<select class="form-control" name="satuan" required="" disabled="">
-            				<option>-- PIlih Satuan --</option>
+            				<option value="<?=null?>">-- PIlih Satuan --</option>
             				<optgroup label="Satuan">
             					<?php
             						$options = array('Cup','Liter','Bungkus','Botol');

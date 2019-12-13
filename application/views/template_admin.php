@@ -131,7 +131,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="#"> Profile</a></li>
+                    <li><a href="<?=base_url('index.php/c_admin/profil')?>"> Profile</a></li>
                     <!-- <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>

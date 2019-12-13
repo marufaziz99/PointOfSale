@@ -29,6 +29,10 @@ class C_admin extends CI_Controller {
         $this->template_admin->load('template_admin','admin/dashboard/v_dashboard', $data);
 	}
 
+	public function profil(){
+		$this->template_admin->load('template_admin', 'admin/profil/v_viewProfile');
+	}
+
 	public function shift1(){
 		$jumlah = 0;
 		$omset = 0;
