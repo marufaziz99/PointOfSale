@@ -4,6 +4,52 @@
 
     class M_admin extends CI_Model{
 
+    	public function get_admin(){
+    		$id = $this->session->userdata('id_staff');
+
+    		$this->db->select('*');
+    		$this->db->from('staff');
+    		$this->db->where('level',1);
+    		$this->db->where('id_staff', $id);
+
+    		$query = $this->db->get();
+
+    		return $query;
+
+    	}
+
+    	public function update_profile($id, $nama, $username, $email, $contact, $alamat, $password){
+    		$data = array(
+                'Nama' => $nama,
+                'username' => $username,
+                'contact' =>$contact,
+                'alamat' => $alamat,
+                'email' => $email
+            );
+
+            if (!empty($password)) {
+                $data['password'] = $password;
+            }
+
+            $this->db->where('id_staff', $id);
+            $this->db->update('staff', $data);
+    	}
+
+    	// public function sum_total(){
+    	// 	$currentDate = date('Y-m-d');
+    	// 	$this->db->select('(SELECT SUM(jual.total) FROM jual WHERE jual.tanggal = "$currentDate" ) AS omset', FALSE);
+    	// 	$query = $this->db->get('jual');
+
+    	// 	return $query;
+    	// }
+
+    	public function get_omset_bulanan(){
+    		$mon = date('m');
+    		$sql = $this->db->query("SELECT SUM(total) AS omset FROM jual WHERE MONTH(tanggal) = '$mon' ");
+
+    		return $sql->result();
+    	}
+
         public function get_count_powder(){
 
             $sql = $this->db->count_all_results('powder');
@@ -85,6 +131,24 @@
             $sql = $this->db->query("SELECT * FROM jual WHERE tanggal = '$currentDate'");
 
             return $sql->result(); 
+        }
+
+        public function get_jenis_menu(){
+        	$this->db->select('*');
+        	$this->db->from('jenis_menu');
+
+        	$query = $this->db->get();
+
+        	return $query->result();
+        }
+
+        public function get_sajian(){
+        	$this->db->select('*');
+        	$this->db->from('penyajian');
+
+        	$query = $this->db->get();
+
+        	return $query->result();
         }
 
         public function get_topping($id = null){

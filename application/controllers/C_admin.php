@@ -30,7 +30,43 @@ class C_admin extends CI_Controller {
 	}
 
 	public function profil(){
-		$this->template_admin->load('template_admin', 'admin/profil/v_viewProfile');
+		$jumlah = 0;
+		$omset = 0;
+		foreach ($this->model->get_transaksi() as $key => $value) {
+			$jumlah++;
+			$omset = $omset + $value->total;
+		}
+
+		$omset_total = 0;
+		foreach ($this->model->get_omset_bulanan() as $key => $value) {
+			$omset_total = $value->omset;
+		}
+		$data = array(
+			'admin' => $this->model->get_admin()->row(),
+			'omset_hari' => $omset,
+			'total_penjualan' => $jumlah,
+			'omset_bulanan' => $omset_total
+		);
+		$this->template_admin->load('template_admin', 'admin/profil/v_viewProfile', $data);
+	}
+
+	public function update_profil($id){
+		if (isset($_POST['submit']) ){
+			$nama = $this->input->post('nama',TRUE);
+			$username = $this->input->post('username',TRUE);
+			$email = $this->input->post('email',TRUE);
+			$contact = $this->input->post('contact',TRUE);
+			$alamat = $this->input->post('alamat',TRUE);
+			$password = $this->input->post('password',TRUE);
+
+			$this->model->update_profile($id,$nama,$username,$email,$contact,$alamat,$password);
+
+			if ($this->db->affected_rows() > 0) {
+				$this->session->set_flashdata('flash','Data Admin Berhasil Diubah');
+			}
+
+			echo "<script>window.location='".base_url('index.php/c_admin/profil')."'</script>";
+		}
 	}
 
 	public function shift1(){
@@ -119,6 +155,20 @@ class C_admin extends CI_Controller {
 			'juice' => $this->model->get_menu_juice()
 		);
 		$this->template_admin->load('template_admin','admin/inventory/v_listInventory', $data);
+	}
+
+	public function insert_powder(){
+		if (isset($_POST['submit'])) {
+			# code...
+		}
+		else{
+			$data = array(
+				'jenis_menu' => $this->model->get_jenis_menu(),
+				'region' => $this->model->get_region(),
+				'sajian' => $this->model->get_sajian()
+			);
+			$this->template_admin->load('template_admin','admin/inventory/powder/v_addPowder', $data);
+		}
 	}
 
 	public function insert_topping(){

@@ -19,7 +19,7 @@
             <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
               <div class="tile-stats">
                 <div class="icon"><i class="fa fa-shopping-cart"></i></div>
-                <div class="count">1</div>
+                <div class="count"><?=$total_penjualan?></div>
                 <br>
                 <h3>Total Penjualan Hari Ini</h3>
               </div>
@@ -27,7 +27,7 @@
             <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
               <div class="tile-stats">
                 <div class="icon"><i class="fa fa-money"></i></div>
-                <div class="count">Rp. <small></small></div>
+                <div class="count">Rp. <small><?=$omset_hari?></small></div>
                 <br>
                 <h3>Omset Hari Ini</h3>
               </div>
@@ -35,7 +35,7 @@
             <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
               <div class="tile-stats">
                 <div class="icon"><i class="fa fa-money"></i></div>
-                <div class="count">1</div>
+                <div class="count"><?=$omset_bulanan?></div>
                 <br>
                 <h3>Omset Bulan Ini</h3>
               </div>
@@ -72,39 +72,39 @@
 	              		<a class="btn btn-warning btn-sm" onclick="active();"><i class="fa fa-pencil"></i> Update</a>
 			          	</div>
 
-	              	<form id="demo-form2" name="form_profile" data-parsley-validate class="form-horizontal form-label-left input-mask" method="post" action="<?=base_url('index.php/c_admin/insert_diskon')?>">
+	              	<form id="demo-form2" name="form_profile" data-parsley-validate class="form-horizontal form-label-left input-mask" method="post" action="<?=base_url('index.php/c_admin/update_profil/'.$admin->id_staff)?>">
 			            	<div class="row">
 			            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nama <span class="required">*</span></label>
 			            		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-				                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : maruf" name="nama" disabled="">
+				                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : maruf" name="nama" disabled="" value="<?=$admin->Nama?>">
 				              </div>
 			            	</div>
 
 			            	<div class="row">
 			            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Username <span class="required">*</span></label>
 			            		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-				                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : wisemajor" name="username" disabled="">
+				                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : wisemajor" name="username" disabled="" value="<?=$admin->username?>">
 				              </div>
 			            	</div>
 
 			            	<div class="row">
 			            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Email <span class="required">*</span></label>
 			            		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-				                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : maruf@gmail.com" name="email" disabled="">
+				                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : maruf@gmail.com" name="email" disabled="" value="<?=$admin->email?>">
 				              </div>
 			            	</div>
 
 			            	<div class="row">
 			            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Contact <span class="required">*</span></label>
 			            		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-				                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : 0823232325" name="contact" disabled="">
+				                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : 0823232325" name="contact" disabled="" value="<?=$admin->contact?>">
 				              </div>
 			            	</div>
 
 			            	<div class="row">
 			            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Alamat <span class="required">*</span></label>
 			            		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-				                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : jl super raya no.166" name="alamat" disabled="">
+				                <input type="text" class="form-control" id="inputSuccess3" placeholder="ex : jl super raya no.166" name="alamat" disabled="" value="<?=$admin->alamat?>">
 				              </div>
 			            	</div>
 
@@ -120,7 +120,7 @@
 			              <div class="ln_solid"></div>
 			              <div class="form-group">
 			                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-			                  <a href="<?=base_url('index.php/c_admin/discount')?>"><button class="btn btn-primary" type="button">Cancel</button></a>
+			                  <a href="<?=base_url('index.php/c_admin')?>"><button class="btn btn-primary" type="button">Cancel</button></a>
 					  						<button class="btn btn-primary" type="reset">Reset</button>
 			                  <button type="submit" name="submit" class="btn btn-success">Submit</button>
 			                </div>

@@ -71,7 +71,7 @@
 		              </div>
 
 		              <div class="x_content">
-		              	<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> ADD</a>
+		              	<a href="<?=base_url('index.php/c_admin/insert_powder')?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> ADD</a>
 		              </div>
 
 		          		<div class="x_content" role="tabpanel" data-example-id="togglable-tabs">
