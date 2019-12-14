@@ -39,7 +39,7 @@
 	            <a href="<?=base_url('index.php/c_admin/inventory')?>" class="btn btn-warning btn-xs"><i class="fa fa-mail-reply"></i> Back</a>
           	</div>         	
             <br />
-            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" action="<?=base_url('index.php/c_admin/insert_region')?>">
+            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" action="#">
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Jenis Menu <span class="required">*</span>
@@ -125,23 +125,57 @@
 												<option value="<?=$value->id_penyajian?>" id="<?=$value->id_penyajian?>"><?=$value->nama_penyajian?></option>
 											<?php
 										}
-
-										// while ($p = mysqli_fetch_array($saji, MYSQLI_ASSOC)) {
-										// 	echo "<option value='" . $p['id_penyajian'] . "' id='" . $p['id_penyajian'] . "'>" .
-										// 		$p['nama_penyajian']
-										// 		. "</option>";
-										// }
 										?>
 									</select>
                 </div>
               </div>
+
+              <div class="form-group aktif" id="form-basic" style="display:none;">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Harga Basic <span class="required">*</span></label>
+            		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+	                <input type="number" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ex: 5000" name="basic">
+	                <span class="form-control-feedback left" aria-hidden="true">Rp.</span>
+	              </div>
+            	</div>  
+
+            	<div class="form-group aktif" id="form-pm" style="display:none;">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Harga PM <span class="required">*</span></label>
+            		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+	                <input type="number" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ex: 5000" name="pm">
+	                <span class="form-control-feedback left" aria-hidden="true">Rp.</span>
+	              </div>
+            	</div>
+
+            	<div class="form-group aktif" id="form-hot" style="display:none;">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Harga Basic <span class="required">*</span></label>
+            		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+	                <input type="number" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ex: 5000" name="hot">
+	                <span class="form-control-feedback left" aria-hidden="true">Rp.</span>
+	              </div>
+            	</div>
+
+            	<div class="form-group aktif" id="form-yakult" style="display:none;">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Harga Basic <span class="required">*</span></label>
+            		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+	                <input type="number" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ex: 5000" name="yakult">
+	                <span class="form-control-feedback left" aria-hidden="true">Rp.</span>
+	              </div>
+            	</div>
+
+            	<div class="form-group aktif" id="form-juice" style="display:none;">
+            		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Harga Basic <span class="required">*</span></label>
+            		<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+	                <input type="number" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ex: 5000" name="juice">
+	                <span class="form-control-feedback left" aria-hidden="true">Rp.</span>
+	              </div>
+            	</div>
 
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                   <a href="<?=base_url('index.php/c_admin/inventory')?>"><button class="btn btn-primary" type="button">Cancel</button></a>
 		  						<button class="btn btn-primary" type="reset">Reset</button>
-                  <button type="submit" name="submit" class="btn btn-success">Submit</button>
+                  <button type="submit" name="kirim" class="btn btn-success">Submit</button>
                 </div>
               </div>
 
@@ -162,7 +196,7 @@
 
 					if ($powder == 'stock') {
 						$stock = $_POST['stock'];
-						$tambah = $query->query("INSERT INTO varian_powder(nama_varian, stok_awal, penambahan, total, sisa, id_region) VALUES ('$namaMenu', '$stock', 0, 0, '$stock', '$region')");
+						$tambah = $query->query("INSERT INTO varian_powder(nama_varian, stok_awal, penambahan, total, sisa, id_region) VALUES ('$namaMenu', '$stock', 0, '$stock', '$stock', '$region')");
 						$data = $query->query("SELECT id_varian FROM varian_powder WHERE nama_varian = '$namaMenu' AND stok_awal = '$stock' AND id_region = '$region' ORDER BY id_varian DESC");
 						$out = mysqli_fetch_array($data);
 						$id_varian = $out[0];
@@ -189,6 +223,8 @@
 								$add = mysqli_query($query, "INSERT INTO detail_penyajian(id_powder, id_penyajian, harga) VALUES('$row[id_powder]', '$cel', '$harga[$cel]')");
 							}
 						}
+
+						$this->session->set_flashdata('flash','Data Menu Berhasil Ditambah');
 					} 
 					else  
 					{
@@ -217,50 +253,40 @@
 								$add = mysqli_query($query, "INSERT INTO detail_penyajian(id_powder, id_penyajian, harga) VALUES('$row[id_powder]', '$cel', '$harga[$cel]')");
 							}
 						}
+
+						$this->session->set_flashdata('flash','Data Menu Berhasil Ditambah');
 					}
-					echo "
-						<script type='text/javascript'>
-							setTimeout(function () { 
-								swal({
-									title: 'Success',
-									text:  'Data has been Added.',
-									type: 'success',
-									showConfirmButton: true
-								});		
-							},10);	
-							window.setTimeout(function(){ 
-								window.location.replace('Menu');
-							} ,3000);	
-						</script>";
+
+					echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
 				}
 				?>
 
 				<script>
 					
 					$(document).ready(function() {
-					// 	$("#adi").multiselect({
-					// 		onChange: function(element, checked) {
-					// 			var brands = $('#adi option:selected');
-					// 			var selected = [];
-					// 			$(brands).each(function(index, brand) {
-					// 				selected.push([$(this).val()]);
-					// 			});
-					// 			$(".aktif").css("display", "none");
-					// 			$.each(selected, (k, v) => {
-					// 				console.log(v[0]);
-					// 				if (v[0] == 1)
-					// 					$("#form-basic").css("display", "block");
-					// 				else if (v[0] == 2)
-					// 					$("#form-pm").css("display", "block");
-					// 				else if (v[0] == 3)
-					// 					$("#form-hot").css("display", "block");
-					// 				else if (v[0] == 4)
-					// 					$("#form-yakult").css("display", "block");
-					// 				else if (v[0] == 5)
-					// 					$("#form-juice").css("display", "block");
-					// 			})
-					// 		}
-					// 	});
+						$("#adi").multiselect({
+							onChange: function(element, checked) {
+								var brands = $('#adi option:selected');
+								var selected = [];
+								$(brands).each(function(index, brand) {
+									selected.push([$(this).val()]);
+								});
+								$(".aktif").css("display", "none");
+								$.each(selected, (k, v) => {
+									console.log(v[0]);
+									if (v[0] == 1)
+										$("#form-basic").css("display", "block");
+									else if (v[0] == 2)
+										$("#form-pm").css("display", "block");
+									else if (v[0] == 3)
+										$("#form-hot").css("display", "block");
+									else if (v[0] == 4)
+										$("#form-yakult").css("display", "block");
+									else if (v[0] == 5)
+										$("#form-juice").css("display", "block");
+								})
+							}
+						});
 						$(function() {
 							$('#pemakaian_powder').change(function() {
 								$('.form').hide();

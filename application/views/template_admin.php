@@ -10,6 +10,8 @@
 
     <title>Fla - FLa Milkshake</title>
 
+    <link rel="stylesheet" href="<?=base_url()?>assets_admin/bootstrap-multiselect/bootstrap-multiselect.css" />
+    <link rel="stylesheet" href="<?=base_url()?>assets_admin/select2/select2.css" />
     <!-- Bootstrap -->
     <link href="<?=base_url()?>assets_admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -32,6 +34,8 @@
     <!-- data tables -->
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets_admin/Datatables/DataTables-1.10.18/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets_admin/Datatables/Buttons-1.5.6/css/buttons.dataTables.min.css">
+
+    
 
     <!-- jQuery -->
     <script src="<?=base_url()?>assets_admin/vendors/jquery/dist/jquery.min.js"></script>
@@ -333,6 +337,8 @@
         }
     </script>
 
+    <script src="<?=base_url()?>assets_admin/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="<?=base_url()?>assets_admin/select2/select2.js"></script>
     <!-- Bootstrap -->
     <script src="<?=base_url()?>assets_admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -374,6 +380,8 @@
 
     <script src="<?=base_url()?>assets/alert/sweetalert2.all.min.js"></script>
     <script src="<?=base_url()?>assets/alert/myscript.js"></script>
+
+
 	
   </body>
 </html>
