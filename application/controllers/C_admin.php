@@ -195,6 +195,40 @@ class C_admin extends CI_Controller {
 		}
 	}
 
+	public function update_powder(){
+		#codee...
+	}
+
+	public function delete_powder(){
+		#code...
+	}
+
+	public function update_varian($id, $region){
+		if (isset($_POST['submit'])) {
+			# code...
+		}
+		else{
+			$data = array(
+				'powder' => $this->model->get_powder($id,$region)
+			);
+
+			$query = $this->model->get_varian($id,$region);
+			if ($query->num_rows() > 0) {
+				$data['varian'] = $query->row();
+			}
+
+			$this->template_admin->load('template_admin','admin/inventory/powder/v_listpowder', $data);
+		}
+	}
+
+	public function delete_varian($id){
+		$this->model->delete_varian($id);
+
+		$this->session->set_flashdata('flash','Data Varian Berhasil Dihapus');
+
+		echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
+	}
+
 	public function update_topping($id){
 		if (isset($_POST['submit'])) {
 			$nama = $this->input->post('nama', TRUE);

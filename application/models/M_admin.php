@@ -151,6 +151,49 @@
         	return $query->result();
         }
 
+        public function get_varian($id, $region){
+        	$this->db->select('*');
+        	$this->db->from('varian_powder');
+        	$this->db->join('region', 'varian_powder.id_region = region.id_region');
+        	$this->db->where('varian_powder.id_varian', $id);
+        	$this->db->where('varian_powder.id_region', $region);
+        	$query = $this->db->get();
+
+        	return $query;
+        }
+
+        public function update_varian(){
+        	#code...
+        }
+
+        public function delete_varian($id){
+        	$this->db->where('id_varian', $id);
+        	$this->db->delete('varian_powder');
+        }
+
+        public function get_powder($id, $region){
+        	$this->db->select('*');
+        	$this->db->from('powder');
+        	$this->db->join('detail_penyajian','powder.id_powder = detail_penyajian.id_powder');
+        	$this->db->join('penyajian', 'detail_penyajian.id_penyajian = penyajian.id_penyajian');
+        	$this->db->join('varian_powder', 'powder.id_varian = varian_powder.id_varian');
+        	$this->db->where('powder.id_varian', $id);
+        	$this->db->where('varian_powder.id_region', $region);
+
+        	$query = $this->db->get();
+
+        	return $query->result();
+        }
+
+        public function update_powder(){
+        	#code...
+        }
+
+        public function delete_powder($id){
+        	$this->db->where('id_powder', $id);
+        	$this->db->delete('powder');
+        }
+
         public function get_topping($id = null){
         	$this->db->select('*');
         	$this->db->from('topping');

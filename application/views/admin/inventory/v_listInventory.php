@@ -115,16 +115,12 @@
 																			for ($x = 1; $x <= $menu = mysqli_fetch_assoc($kueriMenu); $x++) {
 																				?>
 																					<tr class="gradeX">
-																						<!-- <td style="display:none;"><?php echo $x ?></td>
-																						<td style="display:none;" id="aidi"><?php echo $menu['id_varian'] ?></td> -->
 																						<td><?php echo $menu['nama_jenis'] ?></td>
 																						<td><?php echo $menu['nama_varian'] ?></td>
 																						<td><?php echo $menu['sisa'] ?></td>
-																						<!-- <td style="display:none;" id="region"><?php echo $menu['id_region'] ?></td> -->
 																						<td>
-																							<a href="#"><button type="button" class="btn btn-xs btn-success"><i class="fa fa-search"></i></button></a>
-																							<!-- <a href="#"><button type="button" class="btn-edit-menu mb-xs mt-xs mr-xs btn btn-xs btn-warning"><i class="fa fa-pencil"></i></button></a> -->
-																							<a href="#"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></button></a>
+																							<a href="<?=base_url('index.php/c_admin/update_varian/'.$menu['id_varian'].'/'.$menu['id_region'])?>" class="btn btn-xs btn-success"><i class="fa fa-search"></i></a>
+																							<a href="<?=base_url('index.php/c_admin/delete_varian/'.$menu['id_varian'])?>" class="tombol-hapus btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></a>
 																						</td>
 																					</tr>
 																					<?php
