@@ -470,6 +470,48 @@
             $this->db->delete('staff');
         }
 
+        public function insert_transaksi_penambahan($id_ekstra = null , $id_varian = null , $id_topping = null , $id_region, $penambahan){
+        	$currentDate = date('Y-m-d');
+        	$time = date('h:i:s');
+
+        	$data = array(
+        		'tanggal' => $currentDate,
+        		'waktu' => $time,
+        		'penambahan' => $penambahan,
+        		'id_region' => $id_region
+        	);
+
+        	if ($id_ekstra != null) {
+        		$data['id_ekstra'] = $id_ekstra;
+        	}
+
+        	if ($id_varian != null){
+        		$data['id_varian'] = $id_varian;
+        	}
+
+        	if ($id_topping != null) {
+        		$data['id_topping'] = $id_topping;
+        	}
+
+        	$this->db->insert('transaksi_penambahan', $data);
+        }
+
+        public function get_transaksi_penambahan($id = null){
+        	$this->db->select('*');
+        	$this->db->from('transaksi_penambahan');
+        	$this->db->join('varian_powder', 'transaksi_penambahan.id_varian = varian_powder.id_varian', 'left');
+        	$this->db->join('ekstra', 'transaksi_penambahan.id_ekstra = ekstra.id_ekstra', 'left');
+        	$this->db->join('topping','transaksi_penambahan.id_topping = topping.id_topping', 'left');
+        	$this->db->join('region', 'transaksi_penambahan.id_region = region.id_region', 'left');
+        	if ($id != null) {
+        		$this->db->where('transaksi_penambahan.id_transaksi', $id);
+        	}
+
+        	$query = $this->db->get();
+
+        	return $query->result();
+        }
+
     }
 
 ?>

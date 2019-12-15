@@ -171,30 +171,6 @@ class C_admin extends CI_Controller {
 		}
 	}
 
-	public function insert_topping(){
-		if (isset($_POST['submit'])) {
-			$nama_topping = $this->input->post('nama',TRUE);
-			$harga = $this->input->post('harga', TRUE);
-			$stok = $this->input->post('stok', TRUE);
-			$region = $this->input->post('region', TRUE);
-
-			$this->model->insert_topping($nama_topping, $harga, $stok, $region);
-
-			if ($this->db->affected_rows() > 0) {
-				$this->session->set_flashdata('flash','Data Topping Berhasil Ditambahkan');
-			}
-
-			echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
-
-		}
-		else{
-			$data = array(
-				'region' => $this->model->get_region()
-			);
-			$this->template_admin->load('template_admin','admin/inventory/topping/v_addTopping', $data);
-		}
-	}
-
 	public function update_powder(){
 		#codee...
 	}
@@ -225,7 +201,9 @@ class C_admin extends CI_Controller {
 		$id = $this->input->post('id', TRUE);
 		$sisa = $this->input->post('sisa', TRUE);
 		$penambahan = $this->input->post('penambahan', TRUE);
+		$region = $this->input->post('region', TRUE);
 
+		$this->model->insert_transaksi_penambahan(null, $id, null, $region, $penambahan);
 		$status = $this->model->update_varian($id,$sisa,$penambahan);
 
 		$this->output->set_content_type('application/json');
@@ -240,13 +218,39 @@ class C_admin extends CI_Controller {
 		echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
 	}
 
+	public function insert_topping(){
+		if (isset($_POST['submit'])) {
+			$nama_topping = $this->input->post('nama',TRUE);
+			$harga = $this->input->post('harga', TRUE);
+			$stok = $this->input->post('stok', TRUE);
+			$region = $this->input->post('region', TRUE);
+
+			$this->model->insert_topping($nama_topping, $harga, $stok, $region);
+
+			if ($this->db->affected_rows() > 0) {
+				$this->session->set_flashdata('flash','Data Topping Berhasil Ditambahkan');
+			}
+
+			echo "<script>window.location='".base_url('index.php/c_admin/inventory')."'</script>";
+
+		}
+		else{
+			$data = array(
+				'region' => $this->model->get_region()
+			);
+			$this->template_admin->load('template_admin','admin/inventory/topping/v_addTopping', $data);
+		}
+	}	
+
 	public function update_topping($id){
 		if (isset($_POST['submit'])) {
 			$nama = $this->input->post('nama', TRUE);
 			$harga = $this->input->post('harga', TRUE);
 			$penambahan = $this->input->post('penambahan', TRUE);
 			$sisa = $this->input->post('sisa', TRUE);
+			$id_region = $this->input->post('id_region', TRUE);
 
+			$this->model->insert_transaksi_penambahan(null, null, $id, $id_region, $penambahan);
 			$this->model->update_topping($id, $nama, $harga, $penambahan, $sisa);
 
 			if($this->db->affected_rows() > 0){
@@ -318,6 +322,9 @@ class C_admin extends CI_Controller {
 			$sisa = $this->input->post('sisa', TRUE);
 			$satuan = $this->input->post('satuan', TRUE);
 			$penambahan = $this->input->post('penambahan', TRUE);
+			$region = $this->input->post('id_region', TRUE);
+
+			$this->model->insert_transaksi_penambahan($id, null, null, $region, $penambahan);
 
 			$this->model->update_ekstra($id, $nama, $sisa, $penambahan, $satuan);
 

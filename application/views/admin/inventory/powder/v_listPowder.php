@@ -131,6 +131,7 @@
 									var id = '<?=$varian->id_varian?>';
 									var sisa = $('#sisa').val();
 									var penambahan = $('#penambahan').val();
+									var region = '<?=$varian->id_region?>';
 
 									$.ajax({
 										type: 'post',
@@ -138,7 +139,8 @@
 										data : {
 											id: id,
 											sisa:sisa,
-											penambahan : penambahan
+											penambahan : penambahan,
+											region : region
 										},
 										dataType: 'json',
 										success: function(result) {

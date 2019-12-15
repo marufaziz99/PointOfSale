@@ -89,7 +89,8 @@
             	<div class="row">
             		<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Cabang <span class="required">*</span></label>
             		<div class="col-md-6 col-sm-6 col-xs-10 form-group has-feedback">
-            			<select class="form-control" name="id_region" required="" disabled="">
+                  <input type="hidden" name="id_region" value="<?=$ekstra->id_region?>">
+            			<select class="form-control" required="" disabled="">
             				<option>-- PIlih Region --</option>
             				<optgroup label="Region">  
             					<?php
