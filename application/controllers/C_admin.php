@@ -221,6 +221,17 @@ class C_admin extends CI_Controller {
 		}
 	}
 
+	public function action_update_varian(){
+		$id = $this->input->post('id', TRUE);
+		$sisa = $this->input->post('sisa', TRUE);
+		$penambahan = $this->input->post('penambahan', TRUE);
+
+		$status = $this->model->update_varian($id,$sisa,$penambahan);
+
+		$this->output->set_content_type('application/json');
+		echo json_encode(array('status' => $status));
+	}
+
 	public function delete_varian($id){
 		$this->model->delete_varian($id);
 

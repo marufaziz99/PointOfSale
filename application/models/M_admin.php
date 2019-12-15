@@ -162,8 +162,25 @@
         	return $query;
         }
 
-        public function update_varian(){
-        	#code...
+        public function update_varian($id, $sisa, $penambahan){
+        	// $data = array(
+        	// 	'stok_awal' => $sisa,
+        	// 	'penambahan' =>$penambahan,
+        	// 	'total' => $sisa + $penambahan,
+        	// 	'sisa' => $sisa + $penambahan
+        	// );
+
+        	// $this->db->where('id_varian', $id);
+        	// $this->db->update('varian_powder', $data);
+
+        	$sql = $this->db->query("UPDATE varian_powder SET stok_awal = $sisa , penambahan = $penambahan , total = stok_awal + penambahan , sisa = total WHERE id_varian = $id");
+
+        	// if ($this->db->affected_rows() > 0) {
+        		return 'success';
+        	// }
+        	// else{
+        		// return 'gagal';
+        	// }
         }
 
         public function delete_varian($id){
