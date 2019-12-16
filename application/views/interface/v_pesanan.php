@@ -302,7 +302,7 @@
 				data: {
 					id: id
 				},
-				async: true,
+				async: false,
 				dataType: "json",
 				success: function(data) {
 					var html = '';

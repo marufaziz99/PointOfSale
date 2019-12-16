@@ -559,4 +559,20 @@ class C_admin extends CI_Controller {
 
 		echo "<script>window.location='".base_url('index.php/c_admin/karyawan')."'</script>";
 	}
+
+	public function list_penambahan(){
+		$data = array(
+			'data' => $this->model->get_transaksi_penambahan()
+		);
+		$this->template_admin->load('template_admin','admin/laporan_penambahan/v_listPenambahan', $data);
+	}
+
+	public function get_transaksi_penambahan(){
+		$tanggal = $this->input->post('tanggal', TRUE);
+
+		$data = $this->model->get_transaksi_penambahan($tanggal);
+
+		echo json_encode($data);
+
+	}
 }

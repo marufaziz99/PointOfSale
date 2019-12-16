@@ -477,7 +477,7 @@
         	$data = array(
         		'tanggal' => $currentDate,
         		'waktu' => $time,
-        		'penambahan' => $penambahan,
+        		'penambahan_stok' => $penambahan,
         		'id_region' => $id_region
         	);
 
@@ -496,16 +496,21 @@
         	$this->db->insert('transaksi_penambahan', $data);
         }
 
-        public function get_transaksi_penambahan($id = null){
+        public function get_transaksi_penambahan($tanggal = null){
+        	$currentDate = date('Y-m-d');
+
         	$this->db->select('*');
         	$this->db->from('transaksi_penambahan');
         	$this->db->join('varian_powder', 'transaksi_penambahan.id_varian = varian_powder.id_varian', 'left');
         	$this->db->join('ekstra', 'transaksi_penambahan.id_ekstra = ekstra.id_ekstra', 'left');
         	$this->db->join('topping','transaksi_penambahan.id_topping = topping.id_topping', 'left');
         	$this->db->join('region', 'transaksi_penambahan.id_region = region.id_region', 'left');
-        	if ($id != null) {
-        		$this->db->where('transaksi_penambahan.id_transaksi', $id);
+        	if ($tanggal != null) {
+        		$this->db->where('transaksi_penambahan.tanggal', $tanggal);
         	}
+        	else{
+        		$this->db->where('transaksi_penambahan.tanggal', $currentDate);
+        	}        	
 
         	$query = $this->db->get();
 
