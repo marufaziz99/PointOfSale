@@ -283,4 +283,8 @@ class C_barista extends CI_Controller {
 		$this->output->set_content_type('application/json');
 		echo json_encode(array('status' => $status));
 	}
+
+	// public function add_record(){
+		
+	// }
 }

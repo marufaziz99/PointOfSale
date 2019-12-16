@@ -611,6 +611,21 @@
 	}
 	// ---------------------------------------- END FUNGSI ---------------------------------------------------------------------------------
 
+	// function add_record(jenis, id_powder = null, id_ekstra = null , id_topping = null, sajian = null){
+	// 	$.ajax({
+	// 		type: 'post',
+	// 		url: '<?= base_url('index.php/c_barista/add_record') ?>',
+	// 		data : {
+	// 			jenis : jenis,
+	// 			id_powder : id_powder,
+	// 			id_ekstra : id_ekstra,
+	// 			id_topping : id_topping,
+	// 			sajian : sajian
+	// 		},
+	// 		dataType: 'json'
+	// 	});
+	// }
+
 	// ---------------------------------------- FUNGSI MEMASUKKAN MENU PILIHAN KE TABEL ----------------------------------------------------
 	var data = [];
 	$(function() {

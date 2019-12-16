@@ -516,4 +516,41 @@
 			return 'success';
 		}
 
+		// public function add_record($jenis, $id_powder = null, $id_ekstra = null , $id_topping = null, $sajian){
+		// 	$id_region = $this->session->userdata('id_region');
+		// 	$currentDate = date('Y-m-d');
+  //       	$time = date('h:i:s');
+
+		// 	$data = array(
+		// 		'tanggal' => $currentDate,
+		// 		'waktu' => $waktu,
+		// 		'jenis' => $jenis,
+		// 		'id_region' => $id_region
+		// 	);
+
+		// 	if ($id_powder != null) {
+		// 		$data['id_powder'] = $id_powder;
+		// 		$data['pemakaian'] = 1;
+		// 	}
+
+		// 	if ($id_ekstra != null) {
+		// 		$data['id_ekstra'] = $id_ekstra;
+		// 		$data['pemakaian'] = 1;
+		// 	}
+
+		// 	if ($id_topping != null) {
+		// 		$data['id_topping'] = $id_topping;
+		// 		$data['pemakaian'] = 1;
+		// 	}
+
+		// 	if ($sajian == "Basic") {
+		// 		$data['basic'] = 0.1;
+		// 	}
+		// 	else if ($sajian == "PM") {
+		// 		$data['pm'] = 0.2;
+		// 	}
+
+		// 	$this->db->insert('record_pemakaian', $data);
+		// }
+
     }
