@@ -172,65 +172,74 @@
 							$('button').click(function(){
 								var tanggal = $("#tanggal").val();
 
-								$.ajax({
-									url: "<?= base_url('index.php/c_admin/get_transaksi_penambahan') ?>",
-									type: "post",
-									data: {
-										tanggal : tanggal
-									},
-									async: false,
-									dataType: "json",
-									success: function(data) {
-										var html = '';
-										var i;
-										var varian;
-										var ekstra;
-										var topping;
-										var satuan;
+								if (tanggal == '') {
+									Swal.fire({
+										type: 'warning',
+										title: 'Halllooo ...',
+										text: 'Tanggal Belum Diisi'
+									})
+								}
+								else{
+									$.ajax({
+										url: "<?= base_url('index.php/c_admin/get_transaksi_penambahan') ?>",
+										type: "post",
+										data: {
+											tanggal : tanggal
+										},
+										async: false,
+										dataType: "json",
+										success: function(data) {
+											var html = '';
+											var i;
+											var varian;
+											var ekstra;
+											var topping;
+											var satuan;
 
-										for (i = 0; i < data.length; i++) {
-											if (data[i].nama_varian != null) {
-												varian = data[i].nama_varian;
-											}
-											else{
-												varian = '---';
-											}
+											for (i = 0; i < data.length; i++) {
+												if (data[i].nama_varian != null) {
+													varian = data[i].nama_varian;
+												}
+												else{
+													varian = '---';
+												}
 
-											if (data[i].nama_ekstra != null) {
-												ekstra = data[i].nama_ekstra;
-											}
-											else{
-												ekstra = '---';
-											}
+												if (data[i].nama_ekstra != null) {
+													ekstra = data[i].nama_ekstra;
+												}
+												else{
+													ekstra = '---';
+												}
 
-											if (data[i].nama_topping != null) {
-												topping = data[i].nama_topping;
-											}
-											else{
-												topping = '---';
-											}
+												if (data[i].nama_topping != null) {
+													topping = data[i].nama_topping;
+												}
+												else{
+													topping = '---';
+												}
 
-											if (data[i].id_ekstra != null) {
-												satuan = data[i].satuan;
-											}
-											else{
-												satuan = 'cup';
-											}
+												if (data[i].id_ekstra != null) {
+													satuan = data[i].satuan;
+												}
+												else{
+													satuan = 'cup';
+												}
 
-											html += '<tr>' +
-																'<td>' + (i + 1) + '</td>' +
-																'<td>' + data[i].tanggal + '</td>' +
-																'<td>' + data[i].waktu + '</td>' +
-																'<td>' + varian +'</td>' +
-																'<td>' + ekstra + '</td>' +
-																'<td>' + topping + '</td>' +
-																'<td>' + data[i].penambahan_stok +' '+ satuan + '</td>' +
-																'<td>' + data[i].nama_region+ '</td>' +
-															'</tr>';
+												html += '<tr>' +
+																	'<td>' + (i + 1) + '</td>' +
+																	'<td>' + data[i].tanggal + '</td>' +
+																	'<td>' + data[i].waktu + '</td>' +
+																	'<td>' + varian +'</td>' +
+																	'<td>' + ekstra + '</td>' +
+																	'<td>' + topping + '</td>' +
+																	'<td>' + data[i].penambahan_stok +' '+ satuan + '</td>' +
+																	'<td>' + data[i].nama_region+ '</td>' +
+																'</tr>';
+											}
+											$('#show_data').html(html);
 										}
-										$('#show_data').html(html);
-									}
-								});
+									});
+								}								
 							})
             </script>
 
