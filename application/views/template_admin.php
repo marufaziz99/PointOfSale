@@ -96,8 +96,8 @@
                   <li><a href="<?=base_url('index.php/c_admin/discount')?>"><i class="fa fa-money"></i> Diskon</a></li>
                   <li><a href="<?=base_url('index.php/c_admin/region')?>"><i class="fa fa-building-o"></i> Region</a></li>
                   <li><a href="<?=base_url('index.php/c_admin/karyawan')?>"><i class="fa fa-user"></i>Karyawan</a></li>
-                  <li><a href="<?=base_url('index.php/c_admin/list_penambahan')?>"><i class="fa fa-file-text-o"></i>Transaksi Penambahan</a></li>
-                  <li><a><i class="fa fa-bar-chart-o"></i>Laporan (coming soon)</a></li>
+                  <li><a href="<?=base_url('index.php/c_admin/list_penambahan')?>"><i class="fa fa-bar-chart-o "></i>Transaksi Penambahan</a></li>
+                  <!-- <li><a><i class="fa fa-bar-chart-o"></i>Laporan (coming soon)</a></li> -->
                 </ul>
               </div>
 

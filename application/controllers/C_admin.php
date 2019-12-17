@@ -575,4 +575,14 @@ class C_admin extends CI_Controller {
 		echo json_encode($data);
 
 	}
+
+	public function get_search_transaksi(){
+		$tanggal = $this->input->post('tanggal', TRUE);
+		$region = $this->input->post('region', TRUE);
+		$shift = $this->input->post('id',TRUE);
+
+		$data = $this->model->get_search_transaksi($tanggal, $region, $shift);
+
+		echo json_encode($data);
+	}
 }

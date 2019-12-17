@@ -517,6 +517,32 @@
         	return $query->result();
         }
 
+        public function get_search_transaksi($tanggal, $region, $shift){
+            $this->db->select('*');
+            $this->db->from('detail_transaksi');
+            $this->db->join('jual', 'detail_transaksi.no_nota = jual.no_nota');
+            $this->db->join('staff', 'jual.id_staff = staff.id_staff');
+            $this->db->join('powder', 'detail_transaksi.id_powder = powder.id_powder');
+            $this->db->join('penyajian', 'detail_transaksi.id_penyajian = penyajian.id_penyajian', 'left');
+            $this->db->join('topping','detail_transaksi.id_topping = topping.id_topping', 'left');
+            if ($shift == "shift1") {                
+                $this->db->where('jual.waktu >=','08:00:00');
+                $this->db->where('jual.waktu <=','16:00:00');
+            }
+
+            else if($shift == "shift2"){
+                $this->db->where('jual.waktu >','16:00:00');
+                $this->db->where('jual.waktu <=','22:00:00');
+            }
+
+            $this->db->where('jual.tanggal', $tanggal);
+            $this->db->where('detail_transaksi.id_region', $region);
+
+            $query = $this->db->get();
+
+            return $query->result();
+        }
+
     }
 
 ?>
