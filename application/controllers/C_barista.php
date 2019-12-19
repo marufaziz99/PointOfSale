@@ -284,7 +284,16 @@ class C_barista extends CI_Controller {
 		echo json_encode(array('status' => $status));
 	}
 
-	// public function add_record(){
-		
-	// }
+	public function add_record(){
+		$tanggal = $this->input->post('tanggal', TRUE);
+		$waktu = $this->input->post('waktu', TRUE);
+		$id_penyajian = $this->input->post('id_penyajian', TRUE);
+		$id_powder = $this->input->post('id_powder', TRUE);
+		$id_ekstra = $this->input->post('id_ekstra', TRUE);
+		$id_topping = $this->input->post('id_topping', TRUE);
+		$pemakaian = $this->input->post('pemakaian', TRUE);
+		$sajian = $this->input->post('sajian', TRUE);
+
+		$this->model->add_record($tanggal, $waktu,$id_penyajian, $id_ekstra, $id_topping, $id_powder, $pemakaian, $sajian);
+	}
 }

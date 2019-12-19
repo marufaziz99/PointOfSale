@@ -516,41 +516,53 @@
 			return 'success';
 		}
 
-		// public function add_record($jenis, $id_powder = null, $id_ekstra = null , $id_topping = null, $sajian){
-		// 	$id_region = $this->session->userdata('id_region');
-		// 	$currentDate = date('Y-m-d');
-  //       	$time = date('h:i:s');
+		public function add_record($tgl, $waktu,$id_penyajian, $id_ekstra = null, $id_topping = null, $id_powder = null, $pemakaian, $sajian){
+			$id_region = $this->session->userdata('id_region');
+			$currentDate = date('Y-m-d');
+			$time = date('h:i:s');
 
-		// 	$data = array(
-		// 		'tanggal' => $currentDate,
-		// 		'waktu' => $waktu,
-		// 		'jenis' => $jenis,
-		// 		'id_region' => $id_region
-		// 	);
+			$data = array(
+				'tanggal' => $tgl,
+				'waktu' => $waktu,
+				'id_region' => $id_region,
+				'pemakaian' => $pemakaian,
+				'id_penyajian' => $id_penyajian
+			);
 
-		// 	if ($id_powder != null) {
-		// 		$data['id_powder'] = $id_powder;
-		// 		$data['pemakaian'] = 1;
-		// 	}
+			if ($id_powder != null) {
+				$data['id_powder'] = $id_powder;
+			}
 
-		// 	if ($id_ekstra != null) {
-		// 		$data['id_ekstra'] = $id_ekstra;
-		// 		$data['pemakaian'] = 1;
-		// 	}
+			if ($id_ekstra != null) {
+				$id ;
 
-		// 	if ($id_topping != null) {
-		// 		$data['id_topping'] = $id_topping;
-		// 		$data['pemakaian'] = 1;
-		// 	}
+				$sql_id_ekstra = $this->db->query("select id_ekstra from ekstra where id_region = $id_region and nama_ekstra like '%$id_ekstra%' ");
 
-		// 	if ($sajian == "Basic") {
-		// 		$data['basic'] = 0.1;
-		// 	}
-		// 	else if ($sajian == "PM") {
-		// 		$data['pm'] = 0.2;
-		// 	}
+				// foreach ($sql_id_ekstra->row() as $key => $value) {
+				// 	$id = $value->id_ekstra;
+				// }
 
-		// 	$this->db->insert('record_pemakaian', $data);
-		// }
+				if($sql_id_ekstra->num_rows() > 0){
+					$sss = $sql_id_ekstra->row();
+
+					$id = $sss->id_ekstra;
+				}
+
+				$data['id_ekstra'] = $id;
+			}
+
+			if ($id_topping != null) {
+				$data['id_topping'] = $id_topping;
+			}
+
+			if ($sajian == "Basic" || $sajian == "Yakult") {
+				$data['basic'] = 0.1;
+			}
+			else if ($sajian == "PM") {
+				$data['pm'] = 0.2;
+			}
+
+			$this->db->insert('record_pemakaian', $data);
+		}
 
     }
