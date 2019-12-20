@@ -565,4 +565,11 @@
 			$this->db->insert('record_pemakaian', $data);
 		}
 
+		public function del_record($tanggal, $waktu){
+			$this->db->where('tanggal', $tanggal);
+			$this->db->where('waktu', $waktu);
+
+			$this->db->delete('record_pemakaian');
+		}
+
     }

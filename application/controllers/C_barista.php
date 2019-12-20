@@ -296,4 +296,11 @@ class C_barista extends CI_Controller {
 
 		$this->model->add_record($tanggal, $waktu,$id_penyajian, $id_ekstra, $id_topping, $id_powder, $pemakaian, $sajian);
 	}
+
+	public function del_record(){
+		$tanggal = $this->input->post('tanggal', TRUE);
+		$waktu = $this->input->post('waktu', TRUE);
+
+		$this->model->del_record($tanggal, $waktu);
+	}
 }
