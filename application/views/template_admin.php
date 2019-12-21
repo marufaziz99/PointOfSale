@@ -97,7 +97,7 @@
                   <li><a href="<?=base_url('index.php/c_admin/region')?>"><i class="fa fa-building-o"></i> Region</a></li>
                   <li><a href="<?=base_url('index.php/c_admin/karyawan')?>"><i class="fa fa-user"></i>Karyawan</a></li>
                   <li><a href="<?=base_url('index.php/c_admin/list_penambahan')?>"><i class="fa fa-bar-chart-o "></i>Transaksi Penambahan</a></li>
-                  <!-- <li><a><i class="fa fa-bar-chart-o"></i>Laporan (coming soon)</a></li> -->
+                  <li><a href="<?=base_url('index.php/c_admin/get_laporan_pemakaian')?>"><i class="fa fa-book"></i>Laporan Pemakaian</a></li>
                 </ul>
               </div>
 

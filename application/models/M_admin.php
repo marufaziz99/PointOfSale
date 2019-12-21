@@ -541,6 +541,33 @@
             $query = $this->db->get();
 
             return $query->result();
+		}
+		
+		public function get_pakai_powder($tanggal = null , $region = null){
+			// $this->db->select('*');
+			// $this->db->from('record_pemakaian');
+			// $this->db->join('powder', 'record_pemakaian.id_powder = powder.id_powder', 'right');
+   //          $this->db->join('varian_powder', 'powder.id_varian = varian_powder.id_varian');
+
+   //          $this->db->group_by('powder.nama_powder');
+
+            $query = $this->db->query("SELECT nama_powder , stok_awal, penambahan , id_penyajian , SUM(record_pemakaian.pemakaian) AS pakai , sisa from record_pemakaian RIGHT JOIN powder ON record_pemakaian.id_powder = powder.id_powder JOIN varian_powder ON powder.id_varian = varian_powder.id_varian GROUP BY powder.nama_powder");
+
+            // $query = $this->db->get();
+
+            return $query->result();
+		}
+
+        public function get_pakai_topping($tanggal = null , $region = null){
+            $query = $this->db->query("SELECT nama_topping , SUM(record_pemakaian.pemakaian) AS pakai , harga FROM record_pemakaian RIGHT JOIN topping ON record_pemakaian.id_topping = topping.id_topping GROUP BY topping.nama_topping");
+
+            return $query->result();
+        }
+
+        public function get_penjualan($tanggal = null, $region = null){
+            $query = $this->db->query("SELECT nama_jenis, nama_penyajian, SUM(record_pemakaian.pemakaian) AS pakai, harga FROM record_pemakaian RIGHT JOIN powder ON record_pemakaian.id_powder = powder.id_powder JOIN penyajian ON record_pemakaian.id_penyajian = penyajian.id_penyajian JOIN detail_penyajian ON detail_penyajian.id_powder = powder.id_powder JOIN jenis_menu ON powder.id_jenis = jenis_menu.id_jenis GROUP BY jenis_menu.nama_jenis");
+
+            return $query->result();
         }
 
     }

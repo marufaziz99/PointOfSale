@@ -585,4 +585,13 @@ class C_admin extends CI_Controller {
 
 		echo json_encode($data);
 	}
+
+	public function get_laporan_pemakaian(){
+		$data = array(
+			'powder' => $this->model->get_pakai_powder(),
+			'topping' => $this->model->get_pakai_topping(),
+			'penjualan' => $this->model->get_penjualan()
+		);
+		$this->template_admin->load('template_admin','admin/laporan_pemakaian/v_listPemakaian', $data);
+	}
 }
