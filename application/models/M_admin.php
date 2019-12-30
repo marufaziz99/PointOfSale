@@ -517,7 +517,7 @@
         	return $query->result();
         }
 
-        public function get_search_transaksi($tanggal, $region, $shift){
+        public function get_search_transaksi($tanggal, $region, $shift, $tgl_selesai = null){
             $this->db->select('*');
             $this->db->from('detail_transaksi');
             $this->db->join('jual', 'detail_transaksi.no_nota = jual.no_nota');
@@ -535,7 +535,15 @@
                 $this->db->where('jual.waktu <=','22:00:00');
             }
 
-            $this->db->where('jual.tanggal', $tanggal);
+            if ($tgl_selesai != null) {
+                $this->db->where('jual.tanggal >=', $tanggal);
+                $this->db->where('jual.tanggal <=', $tgl_selesai);
+            }
+            else{
+                $this->db->where('jual.tanggal', $tanggal);
+            }
+
+            
             $this->db->where('detail_transaksi.id_region', $region);
 
             $query = $this->db->get();

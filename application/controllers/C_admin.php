@@ -596,8 +596,9 @@ class C_admin extends CI_Controller {
 		$tanggal = $this->input->post('tanggal', TRUE);
 		$region = $this->input->post('region', TRUE);
 		$shift = $this->input->post('id',TRUE);
+		$tgl_selesai = $this->input->post('tgl_selesai', TRUE);
 
-		$data = $this->model->get_search_transaksi($tanggal, $region, $shift);
+		$data = $this->model->get_search_transaksi($tanggal, $region, $shift, $tgl_selesai);
 
 		echo json_encode($data);
 	}
