@@ -585,8 +585,9 @@ class C_admin extends CI_Controller {
 
 	public function get_transaksi_penambahan(){
 		$tanggal = $this->input->post('tanggal', TRUE);
+		$tgl_selesai = $this->input->post('tanggal_selesai', TRUE);
 
-		$data = $this->model->get_transaksi_penambahan($tanggal);
+		$data = $this->model->get_transaksi_penambahan($tanggal, $tgl_selesai);
 
 		echo json_encode($data);
 

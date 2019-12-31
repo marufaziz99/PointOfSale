@@ -496,7 +496,7 @@
         	$this->db->insert('transaksi_penambahan', $data);
         }
 
-        public function get_transaksi_penambahan($tanggal = null){
+        public function get_transaksi_penambahan($tanggal = null, $tgl_selesai = null){
         	$currentDate = date('Y-m-d');
 
         	$this->db->select('*');
@@ -505,9 +505,13 @@
         	$this->db->join('ekstra', 'transaksi_penambahan.id_ekstra = ekstra.id_ekstra', 'left');
         	$this->db->join('topping','transaksi_penambahan.id_topping = topping.id_topping', 'left');
         	$this->db->join('region', 'transaksi_penambahan.id_region = region.id_region', 'left');
-        	if ($tanggal != null) {
-        		$this->db->where('transaksi_penambahan.tanggal', $tanggal);
+        	if ($tanggal != null && $tgl_selesai != null) {
+        		$this->db->where('transaksi_penambahan.tanggal >=', $tanggal);
+                $this->db->where('transaksi_penambahan.tanggal <=', $tgl_selesai);
         	}
+            else if($tanggal != null){
+                $this->db->where('transaksi_penambahan.tanggal', $tanggal);
+            }
         	else{
         		$this->db->where('transaksi_penambahan.tanggal', $currentDate);
         	}        	
