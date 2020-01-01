@@ -387,6 +387,7 @@
                         label: 'Grafik Penjualan',
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         borderColor: 'rgba(153, 102, 255, 1)',
+                        fill : false, //menghilangkan backgroud
                         // data: [0,30000, 15000, 20000, 20000, 20500, 30000, 35000]
                         data: <?=json_encode($preview_total);?>
                     }]
