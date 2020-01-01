@@ -44,6 +44,8 @@
   <!-- jQuery -->
   <script src="<?= base_url() ?>assets_admin/vendors/jquery/dist/jquery.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 
 
 </head>

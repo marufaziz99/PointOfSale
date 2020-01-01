@@ -25,8 +25,10 @@ class C_admin extends CI_Controller {
 			'topping' => $this->model->get_count_topping(),
 			'karyawan' => $this->model->get_count_karyawan(),
 			'profit' => $omset,
-			'order' => $jumlah
+			'order' => $jumlah,
+			'grafik' => $this->model->get_data_grafik_harian()
 		);
+
         $this->template_admin->load('template_admin','admin/dashboard/v_dashboard', $data);
 	}
 
@@ -608,8 +610,23 @@ class C_admin extends CI_Controller {
 		$data = array(
 			'powder' => $this->model->get_pakai_powder(),
 			'topping' => $this->model->get_pakai_topping(),
-			'penjualan' => $this->model->get_penjualan()
+			'penjualan' => $this->model->get_penjualan(),
+			'bubble' => $this->model->get_masak_bubble(),
+			'susu_putih' => $this->model->get_pakai_susu_putih(),
+			'susu_coklat' => $this->model->get_pakai_susu_coklat(),
+			'ekstra' => $this->model->get_pakai_ekstra()
 		);
 		$this->template_admin->load('template_admin','admin/laporan_pemakaian/v_listPemakaian', $data);
+	}
+
+	public function data_grafik(){
+		$data = [];
+		$i = 0;
+		foreach ($this->model->get_data_grafik_harian as $key => $value) {
+			$data[i] = $value->total;
+			$i++;
+		}
+
+		echo json_encode($data);
 	}
 }

@@ -555,36 +555,60 @@
             return $query->result();
 		}
 		
-		public function get_pakai_powder($tanggal = null , $region = null){
-			// $this->db->select('*');
-			// $this->db->from('record_pemakaian');
-			// $this->db->join('powder', 'record_pemakaian.id_powder = powder.id_powder', 'right');
-   //          $this->db->join('varian_powder', 'powder.id_varian = varian_powder.id_varian');
-
-   //          $this->db->group_by('powder.nama_powder');
-
+		public function get_pakai_powder($tanggal = null , $shift = null, $region = null){
             $query = $this->db->query("SELECT nama_powder , stok_awal, penambahan , id_penyajian , SUM(record_pemakaian.pemakaian) AS pakai , sisa from record_pemakaian RIGHT JOIN powder ON record_pemakaian.id_powder = powder.id_powder JOIN varian_powder ON powder.id_varian = varian_powder.id_varian GROUP BY powder.nama_powder");
-
-            // $query = $this->db->get();
 
             return $query->result();
 		}
 
-        public function get_pakai_topping($tanggal = null , $region = null){
+        public function get_pakai_topping($tanggal = null , $shift = null, $region = null){
             $query = $this->db->query("SELECT nama_topping , SUM(record_pemakaian.pemakaian) AS pakai , harga FROM record_pemakaian RIGHT JOIN topping ON record_pemakaian.id_topping = topping.id_topping GROUP BY topping.nama_topping");
 
             return $query->result();
         }
 
-        public function get_penjualan($tanggal = null, $region = null){
+        public function get_penjualan($tanggal = null, $shift = null, $region = null){
             $query = $this->db->query("SELECT nama_jenis, nama_penyajian, SUM(record_pemakaian.pemakaian) AS pakai, harga FROM record_pemakaian RIGHT JOIN powder ON record_pemakaian.id_powder = powder.id_powder JOIN penyajian ON record_pemakaian.id_penyajian = penyajian.id_penyajian JOIN detail_penyajian ON detail_penyajian.id_powder = powder.id_powder JOIN jenis_menu ON powder.id_jenis = jenis_menu.id_jenis GROUP BY jenis_menu.nama_jenis, penyajian.id_penyajian");
 
             return $query->result();
 		}
+
+        public function get_pakai_susu_putih($tanggal = null , $shift = null, $region = null){
+            $query = $this->db->query("SELECT nama_penyajian ,Round(SUM(record_pemakaian.pm),2) AS PM , Round(SUM(record_pemakaian.basic),2) AS basic FROM record_pemakaian JOIN penyajian ON record_pemakaian.id_penyajian = penyajian.id_penyajian JOIN ekstra ON record_pemakaian.id_ekstra = ekstra.id_ekstra WHERE ekstra.nama_ekstra LIKE '%Susu Putih%' GROUP BY penyajian.nama_penyajian");
+
+            return $query->result();
+        }
+
+        public function get_pakai_susu_coklat($tanggal = null , $shift = null, $region = null){
+            $query = $this->db->query("SELECT nama_penyajian ,Round(SUM(record_pemakaian.pm),2) AS PM , Round(SUM(record_pemakaian.basic),2) AS basic FROM record_pemakaian JOIN penyajian ON record_pemakaian.id_penyajian = penyajian.id_penyajian JOIN ekstra ON record_pemakaian.id_ekstra = ekstra.id_ekstra WHERE ekstra.nama_ekstra LIKE '%Susu Coklat%' GROUP BY penyajian.nama_penyajian");
+
+            return $query->result();
+        }
+
+        public function get_pakai_ekstra($tanggal = null , $shift = null, $region = null){
+            $query = $this->db->query("SELECT nama_ekstra , stock_awal, penambahan,Round(SUM(record_pemakaian.pm + record_pemakaian.basic),2) AS pakai_susu, SUM(record_pemakaian.pemakaian) AS pakai FROM record_pemakaian RIGHT JOIN ekstra ON record_pemakaian.id_ekstra = ekstra.id_ekstra GROUP BY ekstra.nama_ekstra");
+
+            return $query->result();
+        }
+
+        public function get_masak_bubble($tanggl = null , $shift = null, $region = null){
+            $query = $this->db->query("SELECT waktu , nama_ekstra, stock_awal , SUM(record_pemakaian.pemakaian) AS pakai FROM record_pemakaian JOIN ekstra ON record_pemakaian.id_ekstra = ekstra.id_ekstra WHERE ekstra.nama_ekstra LIKE '%Bubble%' GROUP BY ekstra.nama_ekstra");
+
+            return $query->result();
+        }
 		
-		public function get_susu_putih() {
-			
-		}
+
+        //mengambil data grafik harian
+        public function get_data_grafik_harian(){
+            $query = $this->db->query("SELECT tanggal, SUM(total) AS uang FROM jual GROUP BY tanggal ORDER BY no_nota DESC LIMIT 10");
+
+            if ($query->num_rows() > 0) {
+                foreach ($query->result() as $key => $value) {
+                    $hasil[] = $value;
+                }
+                return $hasil;
+            }
+        }
 
     }
 

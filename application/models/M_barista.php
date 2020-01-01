@@ -516,7 +516,7 @@
 			return 'success';
 		}
 
-		public function add_record($tgl, $waktu,$id_penyajian, $id_ekstra = null, $id_topping = null, $id_powder = null, $pemakaian, $sajian){
+		public function add_record($tgl, $waktu,$id_penyajian = null, $id_ekstra = null, $id_topping = null, $id_powder = null, $pemakaian, $sajian){
 			$id_region = $this->session->userdata('id_region');
 			$currentDate = date('Y-m-d');
 			$time = date('h:i:s');
@@ -525,9 +525,12 @@
 				'tanggal' => $tgl,
 				'waktu' => $waktu,
 				'id_region' => $id_region,
-				'pemakaian' => $pemakaian,
-				'id_penyajian' => $id_penyajian
+				'pemakaian' => $pemakaian
 			);
+
+			if ($id_penyajian != null) {
+				$data['id_penyajian'] = $id_penyajian;
+			}
 
 			if ($id_powder != null) {
 				$data['id_powder'] = $id_powder;

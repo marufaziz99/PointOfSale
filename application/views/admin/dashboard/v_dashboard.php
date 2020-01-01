@@ -50,7 +50,8 @@
           			</div>
 
           			<div class="col-md-9 col-sm-9 col-xs-12">
-          				<div id="chart_plot_01" class="demo-placeholder"></div>
+          				<!-- <div id="chart_plot_01" class="demo-placeholder"></div> -->
+                              <canvas id="myChart11" style="max-height: 350px;"></canvas>
           			</div>
           			<div class="col-md-3 col-sm-3 col-xs-12 bg-white">
           				<div class="x_title">
@@ -358,3 +359,40 @@
           		</div>
           	</div>
           </div>
+
+          <?php
+
+            foreach ($grafik as $key => $value) {
+              $money[] = $value->uang;
+              $tanggal[] = $value->tanggal;
+            }
+
+            $preview_tgl = array_reverse($tanggal);
+            $preview_total = array_reverse($money);
+
+          ?>
+
+
+          <script>
+            
+            var ctx = document.getElementById('myChart11').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: <?=json_encode($preview_tgl);?>,
+                    datasets: [{
+                        label: 'Grafik Penjualan',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        // data: [0,30000, 15000, 20000, 20000, 20500, 30000, 35000]
+                        data: <?=json_encode($preview_total);?>
+                    }]
+                },
+
+                // Configuration options go here
+                options: {}
+            });
+          </script>
