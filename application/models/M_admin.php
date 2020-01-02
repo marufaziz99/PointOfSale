@@ -608,7 +608,18 @@
                 }
                 return $hasil;
             }
-        }
+		}
+		
+		public function get_data_grafik_favorit(){
+			$query = $this->db->query("SELECT powder.nama_powder , COUNT(detail_transaksi.id_powder) AS pakai FROM detail_transaksi JOIN powder ON detail_transaksi.id_powder = powder.id_powder GROUP BY powder.nama_powder ORDER BY pakai DESC LIMIT 4");
+
+			if($query->num_rows() > 0){
+				foreach ($query->result() as $key => $value) {
+					$hasil[] = $value;
+				}
+				return $hasil;
+			}
+		}
 
     }
 

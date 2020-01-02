@@ -26,7 +26,8 @@ class C_admin extends CI_Controller {
 			'karyawan' => $this->model->get_count_karyawan(),
 			'profit' => $omset,
 			'order' => $jumlah,
-			'grafik' => $this->model->get_data_grafik_harian()
+			'grafik' => $this->model->get_data_grafik_harian(),
+			'favorit' => $this->model->get_data_grafik_favorit()
 		);
 
         $this->template_admin->load('template_admin','admin/dashboard/v_dashboard', $data);

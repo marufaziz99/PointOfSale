@@ -575,4 +575,17 @@
 			$this->db->delete('record_pemakaian');
 		}
 
+		public function grafik_barista(){
+			$id_staff = $this->session->userdata('id_staff');
+
+			$query = $this->db->query("SELECT tanggal, SUM(detail_transaksi.jumlah) AS uang FROM detail_transaksi JOIN jual ON detail_transaksi.no_nota = jual.no_nota WHERE jual.id_staff = '$id_staff' GROUP BY jual.tanggal ORDER BY jual.tanggal DESC LIMIT 10");
+
+			if($query->num_rows() > 0){
+				foreach ($query->result() as $key => $value) {
+					$hasil[] = $value;
+				}
+				return $hasil;
+			}
+		}
+
     }
