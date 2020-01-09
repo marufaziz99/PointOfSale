@@ -48,6 +48,103 @@ class C_admin extends CI_Controller {
 		force_download('import/Topping.csv', NULL);
 	}
 
+	public function upload_powder()
+	{
+	}
+
+	public function upload_topping()
+	{
+		$csvMimes = array('application/vnd.ms-excel', 'text/plain', 'text/csv', 'text/tsv');
+		if (!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $csvMimes)) {
+			if (is_uploaded_file($_FILES['file']['tmp_name'])) {
+
+				//open uploaded csv file with read only mode
+				$csvFile = fopen($_FILES['file']['tmp_name'], 'r');
+
+				// skip first line
+				// if your csv file have no heading, just comment the next line
+				fgetcsv($csvFile);
+
+				//parse data from csv file line by line
+				while (($line = fgetcsv($csvFile)) !== FALSE) {
+					// Get row data
+					$nama  = $line[0];
+					$harga = $line[1];
+					$stock  = $line[2];
+					$tambah = $line[3];
+					$total = $line[4];
+					$sisa = $line[5];
+					$region = $line[6];
+
+					// Insert member data in the database
+					$this->db->insert("topping", array("nama_topping"=>$nama, "harga"=>$harga, "stock_awal"=>$stock, "penambahan"=>$tambah, "total"=>$total, "sisa"=>$sisa, "id_region"=>$region));
+				}
+
+				// Close opened CSV file
+				fclose($csvFile);
+
+				$qstring["status"] = 'Success';
+			} else {
+				$qstring["status"] = 'Error';
+			}
+		}
+	}
+
+	public function upload_ekstra()
+	{
+		$csvMimes = array('application/vnd.ms-excel', 'text/plain', 'text/csv', 'text/tsv');
+		if (!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $csvMimes)) {
+			if (is_uploaded_file($_FILES['file']['tmp_name'])) {
+
+				//open uploaded csv file with read only mode
+				$csvFile = fopen($_FILES['file']['tmp_name'], 'r');
+
+				// skip first line
+				// if your csv file have no heading, just comment the next line
+				fgetcsv($csvFile);
+
+				//parse data from csv file line by line
+				while(($line = fgetcsv($csvFile)) !== FALSE){
+                    // Get row data
+                    $nama  = $line[0];
+                    $stock  = $line[1];
+                    $tambah = $line[2];
+                    $total = $line[3];
+                    $sisa = $line[4];
+                    $satuan = $line[5];
+                    $region = $line[6];
+
+					// Insert member data in the database
+					$this->db->insert("ekstra", array("nama_ekstra"=>$nama, "stock_awal"=>$stock, "penambahan"=>$tambah, "total"=>$total, "sisa"=>$sisa, "satuan"=>$satuan, "id_region"=>$region));
+					// $id = $this->db->get_where("ekstra", array("nama_ekstra"=>$nama, "satuan"=>$satuan, "id_region"=>$region))->result_array();
+					
+					if ($this->db->affected_rows() > 0) {
+						$query = $this->model->get_id_ekstra($nama, $satuan, $region);
+		
+						if ($query->num_rows() > 0) {
+							$row = $query->row();
+		
+							$id_ekstra = $row->id_ekstra;
+		
+							$this->model->insert_detail_ekstra($id_ekstra);
+		
+							if ($this->db->affected_rows() > 0) {
+								$this->session->set_flashdata('flash', 'Data Ekstra Berhasil Disimpan');
+							}
+						}
+					}
+                }
+
+                // Close opened CSV file
+                fclose($csvFile);
+
+				$qstring["status"] = 'Success';
+			} else {
+				$qstring["status"] = 'Error';
+			}
+		}
+	}
+
 	public function profil(){
 		$jumlah = 0;
 		$omset = 0;
